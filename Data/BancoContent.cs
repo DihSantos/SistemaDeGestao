@@ -19,6 +19,12 @@ namespace SistemaDeGestao.Data
             modelBuilder.Entity<FabricantesModel>()
                 .Property(b => b.Id)
                 .UseIdentityColumn(seed: 1, increment: 1);
+            modelBuilder.Entity<ConcessionariasModel>()
+                .Property(e => e.Id)
+                .UseIdentityColumn(seed: 1, increment: 1);
+            modelBuilder.Entity<VendasModel>()
+                .Property(i => i.ProtocoloVenda)
+                .UseIdentityColumn(seed:001, increment: 1);
         }
 
     }

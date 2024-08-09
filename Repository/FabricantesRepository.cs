@@ -12,10 +12,10 @@ namespace SistemaDeGestao.Repository
             _context = bancoContext;
         }
 
-         //public FabricantesModel ListarPorId(int id)
-        //{
-           // return _context.Fabricantes.FirstOrDefault(x => x.Id == id);
-       // }
+        public FabricantesModel ListarPorId(int id)
+        {
+            return _context.Fabricantes.FirstOrDefault(x => x.Id == id);
+        }
 
         public List<FabricantesModel> GetAll()
         {
@@ -28,11 +28,11 @@ namespace SistemaDeGestao.Repository
             _context.SaveChanges();
             return fabricantes;
         }
-        /* public FabricantesModel Atualizar(FabricantesModel fabricantes)
-         //{
-            // FabricantesModel fabricantesDB = ListarPorId(fabricantes.Id);
+        public FabricantesModel Atualizar(FabricantesModel fabricantes)
+        {
+            FabricantesModel fabricantesDB = ListarPorId(fabricantes.Id);
 
-            // if (fabricantesDB == null) throw new Exception("Houve um erro ao atualizar os dados do fabricante!");
+            if (fabricantesDB == null) throw new Exception("Houve um erro ao atualizar os dados do fabricante!");
 
              fabricantesDB.Fabricante = fabricantes.Fabricante;
              fabricantesDB.PaisOrigem = fabricantes.PaisOrigem;
@@ -55,6 +55,6 @@ namespace SistemaDeGestao.Repository
              _context.SaveChanges();
              return true;
 
-         }*/
+         }
     }
 }
