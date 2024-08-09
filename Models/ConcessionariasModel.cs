@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SistemaDeGestao.Models
 {
@@ -10,7 +11,10 @@ namespace SistemaDeGestao.Models
         public string Concessionaria { get; set; }
         public string Rua { get; set; }
         public string Cidade { get; set; }
+        [Required, Column(TypeName ="char(2)")]
         public string Estado { get; set; }
+
+        [Required, Column(TypeName ="char(9)")]
         public int CEP { get; set; }
         [Phone(ErrorMessage = "Formato de telefone inválido")]
         public string Telefone { get; set; }

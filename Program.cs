@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaDeGestao.Data;
+using SistemaDeGestao.Interface;
+using SistemaDeGestao.Repository;
+using SistemaDeGestao.Service;
 
 internal class Program
 {
@@ -14,6 +17,12 @@ internal class Program
         var configuration = provider.GetRequiredService<IConfiguration>();
         builder.Services.AddEntityFrameworkSqlServer()
             .AddDbContext<BancoContent>(item => item.UseSqlServer(configuration.GetConnectionString("DataBase")));
+
+        builder.Services.AddScoped<IFabricantesRepository, FabricantesRepository>();
+        builder.Services.AddScoped<IVeiculosRepository, VeiculosRepository>();
+        builder.Services.AddScoped<IConcessionariasRepository, ConcessionariasRepository>();
+        builder.Services.AddScoped<IVendasRepository, VendasRepository>();
+        builder.Services.AddScoped<IVendasService, VendasService>();
 
 
         var app = builder.Build();
