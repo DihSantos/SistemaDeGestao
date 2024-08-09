@@ -8,10 +8,12 @@ namespace SistemaDeGestao.Controllers
     public class VeiculosController : Controller
     {
         private readonly IVeiculosRepository _veiculosRepository;
+        private readonly IFabricantesRepository _fabricantesRepository;
 
-        public VeiculosController(IVeiculosRepository veiculosRepository)
+        public VeiculosController(IVeiculosRepository veiculosRepository, IFabricantesRepository fabricantesRepository)
         {
             _veiculosRepository = veiculosRepository;
+            _fabricantesRepository = fabricantesRepository;
         }
 
         public IActionResult Index()
@@ -22,6 +24,7 @@ namespace SistemaDeGestao.Controllers
 
         public IActionResult Cadastrar()
         {
+            LoadData();
             return View();
         }
 
@@ -55,6 +58,12 @@ namespace SistemaDeGestao.Controllers
             _veiculosRepository.Atualizar(veiculos);
 
             return RedirectToAction("Index");
+        }
+
+        private void LoadData()
+        {
+            ViewBag.veiculos = _veiculosRepository.GetAll();
+            ViewBag.fabricantes = _fabricantesRepository.GetAll();
         }
     }
 }

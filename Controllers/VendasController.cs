@@ -30,15 +30,15 @@ namespace SistemaDeGestao.Controllers
             return View();
         }
 
-        public IActionResult DeletarConfirmacao(int id)
+        public IActionResult DeletarConfirmacao(int ProtocoloVenda)
         {
-            VendasModel veiculos = _vendasRepository.ListarPorId(id);
+            VendasModel veiculos = _vendasRepository.ListarPorId(ProtocoloVenda);
             return View(veiculos);
         }
 
-        public IActionResult Deletar(int id)
+        public IActionResult Deletar(int ProtocoloVenda)
         {
-            _vendasRepository.Deletar(id);
+            _vendasRepository.Deletar(ProtocoloVenda);
             return RedirectToAction("Index");
         }
 
@@ -61,8 +61,8 @@ namespace SistemaDeGestao.Controllers
 
         private void LoadData()
         {
-            ViewBag.veiculos = _veiculosRepository.GetAll();
-            ViewBag.concessionarias = _concessionariasRepository.GetAll();
+            ViewBag.Veiculos = _veiculosRepository.GetAll();
+            ViewBag.Concessionarias = _concessionariasRepository.GetAll();
         }
     }
 }

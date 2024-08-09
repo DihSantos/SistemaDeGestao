@@ -25,8 +25,16 @@
     </div>
 
     <div class="col-md-4">
-        <label for="fabricante" class="form-label">Fabricante</label>
-        <input type="text" asp-for="Fabricante" class="form-control" placeholder="Digite o fabricante">
+        <label for="Fabricante" class="form-label">Fabricante</label>
+        <select type="text" class="form-select" asp-for="Fabricante">
+            <option value="" selected disabled>Selecione um Fabricante</option>
+            @{
+                foreach (var fabricantes in ViewBag.Fabricantes)
+                {
+                    <option value="@fabricantes.Fabricante">@fabricantes.Fabricante</option>
+                }
+            }
+        </select>
     </div>
 
     <div class="col-md-4">

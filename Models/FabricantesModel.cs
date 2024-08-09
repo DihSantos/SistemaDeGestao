@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Cryptography;
 
 namespace SistemaDeGestao.Models
 {
     public class FabricantesModel
     {
-        public int Id { get; set; }
+        
         [Key]
         [MaxLength(100), MinLength(10)]
         public string Fabricante { get; set; }
