@@ -1,0 +1,59 @@
+﻿@model List<VeiculosModel>
+@{
+    ViewData["Title"] = "Lista de Veículos";
+}
+
+<div class="d-grid d-md-flex">
+    <a class="waves-effect waves-light btn" role="button" asp-controller="Home" asp-action="Index"><i class="small material-icons">arrow_back</i></a>
+</div>
+
+<div class="text-center">
+
+    <h3 style="color:#585858">Listagem de Veículos</h3>
+    <br />
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="waves-effect waves-light btn" role="button" asp-controller="Veiculos" asp-action="Cadastrar">Adcionar novo Veículo</a>
+    </div>
+
+    <br />
+    <br />
+
+    <table class="table table-striped">
+        <thead>
+            <tr style="color:#585858">
+                <th scope="col">#</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Ano de Fabricação</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Fabricante</th>
+                <th scope="col">Tipo de Veículo</th>
+                <th scope="col">Descrição</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (VeiculosModel veiculos in Model)
+                {
+                    <tr>
+                        <th scope="row">@veiculos.Id</th>
+                        <td>@veiculos.Modelo</td>
+                        <td>@veiculos.AnoFabricacao</td>
+                        <td>@veiculos.Preco</td>
+                        <td>@veiculos.Fabricante</td>
+                        <td>@veiculos.TipoVeiculo</td>
+                        <td>@veiculos.Descricao</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a role="button" class="btn btn-info" asp-route-id="@veiculos.Id" asp-controller="Veiculos" asp-action="Editar"><i class="small material-icons">border_color</i></a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@veiculos.Id" asp-controller="Veiculos" asp-action="DeletarConfirmacao"><i class="small material-icons">delete</i></a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+</div>

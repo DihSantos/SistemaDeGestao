@@ -1,0 +1,54 @@
+﻿@model VeiculosModel
+@{
+    ViewData["Title"] = "Edição de dados";
+}
+
+<div class="text-center">
+    <h3 style="color:#585858">Editar Veículo</h3>
+</div>
+
+<form asp-controller="Veiculos" asp-action="Alterar" method="post" class="row g-3 ">
+
+    <input type="hidden" asp-for="Id"/>
+
+    <div class="row-cols-md-6">
+        <label for="modelo" class="form-label">Modelo</label>
+        <input type="text" asp-for="Modelo" class="form-control" placeholder="Digite o modelo do veículo">
+    </div>
+
+    <div class="row-cols-md-6">
+        <label for="anoFabricacao" class="form-label">Ano de Fabricação</label>
+        <input type="text" asp-for="AnoFabricacao" class="form-control" placeholder="Digite o ano de fabricação do veículo">
+    </div>
+
+    <div class="col-md-4">
+        <label for="preco" class="form-label">Preço</label>
+        <input type="text" asp-for="Preco" class="form-control" placeholder="Digite o preço">
+    </div>
+
+    <div class="col-md-4">
+        <label for="fabricante" class="form-label">Fabricante</label>
+        <input type="text" asp-for="Fabricante" class="form-control" placeholder="Digite o fabricante">
+    </div>
+
+    <div class="col-md-4">
+        <label for="tipoVeiculo" class="form-label">Selecione o tipo do veículo</label>
+        <select type="text" asp-for="TipoVeiculo" class="form-select">
+            <option selected disabled>Selecione o tipo do veículo</option>
+            <option value="">Barco</option>
+            <option value="">Carro</option>
+            <option value="">Caminhão</option>
+            <option value="">Moto</option>
+        </select>
+    </div>
+
+    <div class="col-md-6">
+        <label for="descricao" class="form-label">Descrição</label>
+        <textarea rows="3" asp-for="Descricao" class="form-control" placeholder="Descrição(Opcional)"></textarea>
+    </div>
+
+    <div class="col-12">
+        <button class="waves-effect waves-light btn" type="submit">Salvar dados</button>
+        <a class="btn btn-light" asp-controller="Veiculos" asp-action="Index" role="button">Voltar</a>
+    </div>
+</form>

@@ -1,0 +1,54 @@
+﻿@model List<ConcessionariasModel>
+@{
+    ViewData["Title"] = "Concessionárias";
+}
+<div class="d-grid d-md-flex">
+    <a class="waves-effect waves-light btn" role="button" asp-controller="Home" asp-action="Index"><i class="small material-icons">arrow_back</i></a>
+</div>
+
+<div class="text-center">
+
+    <h3 style="color:#585858">Listagem de Concessionárias</h3>
+    <br />
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" role="button" asp-controller="Concessionarias" asp-action="Cadastrar">Adicionar nova Concessionária</a>
+    </div>
+    <br /><br />
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome da Concessionária</th>
+                <th scope="col">Endereço Completo</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Capacidade Máxima de Veículos</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model != null && Model.Any())
+            {
+                foreach(ConcessionariasModel concessionarias in Model)
+                {
+                    <tr>
+                        <th scope="row">@concessionarias.Id</th>
+                        <td>@concessionarias.Concessionaria</td>
+                        <td>@concessionarias.Rua - @concessionarias.Cidade - @concessionarias.Estado - @concessionarias.CEP</td>
+                        <td>@concessionarias.Telefone</td>
+                        <td>@concessionarias.Email</td>
+                        <td>@concessionarias.CapacidadeVeiculos</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a role="button" class="btn btn-info" asp-route-id="@concessionarias.Id" asp-controller="Concessionarias" asp-action="Editar"><i class="small material-icons">border_color</i></a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@concessionarias.Id" asp-controller="Concessionarias" asp-action="DeletarConfirmacao"><i class="small material-icons">delete</i></a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

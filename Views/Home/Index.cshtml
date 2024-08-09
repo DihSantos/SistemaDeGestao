@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<br />
+<br />
+
+<div class="row text-center">
+    <div class="col-md-3">
+        <div class="row">
+            <a class="vendas" asp-controller="Vendas" asp-action="Index"><i class="medium material-icons" style="color:black">shopping_cart</i></a>
+            <span>Vendas</span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="row">
+                <a class="veiculos" asp-controller="Veiculos" asp-action="Index"><i class="medium material-icons" style="color:black">drive_eta</i></a>
+            <span>Veículos</span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="row">
+                <a class="concessionarias" asp-controller="Concessionarias" asp-action="Index"><i class="medium material-icons" style="color:black">store</i></a>
+            <span>Concessionárias</span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="row">
+                <a class="fabricantes" asp-controller="Fabricantes" asp-action="Index"><i class="medium material-icons" style="color:black">location_city</i></a>
+            <span>Fabricantes</span>
+        </div>
+    </div>
+
+</div>
+

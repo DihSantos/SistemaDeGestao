@@ -1,0 +1,38 @@
+﻿@model FabricantesModel
+@{
+    ViewData["Title"] = "Edição de dados";
+}
+
+<div class="text-center">
+    <h3 style="color:#585858">Editar Fabricante</h3>
+</div>
+
+<form asp-controller="Fabricantes" asp-action="Alterar" method="post" class="row g-3 ">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="row-cols-md-6">
+        <label for="nomeFabricante" class="form-label">Nome do Fabricante</label>
+        <input type="text" asp-for="Fabricante" class="form-control" placeholder="Digite o nome do fabricante">
+    </div>
+
+    <div class="row-cols-md-6">
+        <label for="paisOrigem" class="form-label">País de Origem</label>
+        <input type="text" asp-for="PaisOrigem" class="form-control" placeholder="Digite o país de origem">
+    </div>
+
+    <div class="col-md-6">
+        <label for="anoFundacao" class="form-label">Ano de Fundação</label>
+        <input type="text" asp-for="AnoFundacao" class="form-control" placeholder="Digite o ano">
+    </div>
+
+    <div class="col-md-6">
+        <label for="basic-url" class="form-label">Website</label>
+        <input type="text" asp-for="Website" class="form-control" placeholder="Digite a URL">
+    </div>
+
+    <div class="col-12">
+        <button class="waves-effect waves-light btn" type="submit">Salvar dados</button>
+        <a class="btn btn-light" asp-controller="Fabricantes" asp-action="Index" role="button">Voltar</a>
+    </div>
+</form>
