@@ -25,6 +25,7 @@ namespace SistemaDeGestao.Repository
 
         public VendasModel Registrar(VendasModel vendas)
         {
+            vendas.DataVenda = DateTime.Now;
             _context.Vendas.Add(vendas);
             _context.SaveChanges();
             return vendas;

@@ -45,6 +45,9 @@ namespace SistemaDeGestao.Controllers
         [HttpPost]
         public IActionResult Registrar(VendasModel vendas)
         {
+            VeiculosModel veiculos = _veiculosRepository.ListarPorId(vendas.VeiculoId);
+            var veiculomodelo = veiculos.Modelo;
+            vendas.VeiculoModelo = veiculomodelo;
             _vendasRepository.Registrar(vendas);
             //LoadData();
             //float preco = PrecoVenda;

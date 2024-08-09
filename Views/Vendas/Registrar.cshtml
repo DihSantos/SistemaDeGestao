@@ -28,7 +28,7 @@
 
     <div class="col-md-5">
         <label for="veiculo" class="form-label">Veículo</label>
-        <select type="text" class="form-select" asp-for="VeiculoModelo">
+        <select type="text" class="form-select" asp-for="VeiculoId">
             <option value="" selected disabled>Selecione o veículo</option>
             @{
                 foreach(var veiculos in ViewBag.Veiculos)
