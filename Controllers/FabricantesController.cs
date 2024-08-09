@@ -22,7 +22,7 @@ namespace SistemaDeGestao.Controllers
             return View();
         }
 
-        public IActionResult Editar(int id)
+        /*public IActionResult Editar(int id)
         {
             FabricantesModel fabricantes = _fabricantesRepository.ListarPorId(id);
             return View(fabricantes);
@@ -38,7 +38,7 @@ namespace SistemaDeGestao.Controllers
         {
             _fabricantesRepository.Deletar(id);
             return RedirectToAction("Index");
-        }
+        }*/
 
         [HttpPost]
         public IActionResult Cadastrar(FabricantesModel fabricantes)
@@ -47,12 +47,12 @@ namespace SistemaDeGestao.Controllers
 
             return RedirectToAction("Index");
         }
-        [HttpPost]
+        /*[HttpPost]
         public IActionResult Alterar(FabricantesModel fabricantes)
         {
             _fabricantesRepository.Atualizar(fabricantes);
 
             return RedirectToAction("Index");
-        }
+        }*/
     }
 }

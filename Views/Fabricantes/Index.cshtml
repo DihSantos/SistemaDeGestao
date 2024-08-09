@@ -35,15 +35,15 @@
                 foreach (FabricantesModel fabricantes in Model)
                 {
                     <tr>
-                        <th scope="row">@fabricantes.Id</th>
+                        
                         <td>@fabricantes.Fabricante</td>
                         <td>@fabricantes.PaisOrigem</td>
                         <td>@fabricantes.AnoFundacao</td>
                         <td>@fabricantes.Website</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a role="button" class="btn btn-info gap-2" asp-route-id="@fabricantes.Id" asp-controller="Fabricantes" asp-action="Editar"><i class="small material-icons">border_color</i></a>
-                                <a role="button" class="btn btn-danger gap-2" asp-route-id="@fabricantes.Id" asp-controller="Fabricantes" asp-action="DeletarConfirmacao"><i class="small material-icons">delete</i></a>
+                                <a role="button" class="btn btn-info gap-2" asp-route-id="@fabricantes.Fabricante" asp-controller="Fabricantes" asp-action="Editar"><i class="small material-icons">border_color</i></a>
+                                <a role="button" class="btn btn-danger gap-2" asp-route-id="@fabricantes.Fabricante" asp-controller="Fabricantes" asp-action="DeletarConfirmacao"><i class="small material-icons">delete</i></a>
                             </div>
                         </td>
                     </tr>

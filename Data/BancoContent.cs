@@ -14,7 +14,12 @@ namespace SistemaDeGestao.Data
         public DbSet<ConcessionariasModel> Concessionarias { get; set; }
         public DbSet<VendasModel> Vendas { get; set; }
 
-       
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<FabricantesModel>()
+                .Property(b => b.Id)
+                .UseIdentityColumn(seed: 1, increment: 1);
+        }
 
     }
 }
