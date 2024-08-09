@@ -34,27 +34,27 @@ namespace SistemaDeGestao.Repository
 
             if (fabricantesDB == null) throw new Exception("Houve um erro ao atualizar os dados do fabricante!");
 
-            fabricantesDB.Fabricante = fabricantes.Fabricante;
-            fabricantesDB.PaisOrigem = fabricantes.PaisOrigem;
-            fabricantesDB.AnoFundacao = fabricantes.AnoFundacao;
-            fabricantesDB.Website = fabricantes.Website;
+             fabricantesDB.Fabricante = fabricantes.Fabricante;
+             fabricantesDB.PaisOrigem = fabricantes.PaisOrigem;
+             fabricantesDB.AnoFundacao = fabricantes.AnoFundacao;
+             fabricantesDB.Website = fabricantes.Website;
 
-            _context.Fabricantes.Update(fabricantesDB);
-            _context.SaveChanges(true);
+             _context.Fabricantes.Update(fabricantesDB);
+             _context.SaveChanges(true);
 
-            return fabricantesDB;
-        }
+             return fabricantesDB;
+         }
 
-        public bool Deletar(int id)
-        {
-            FabricantesModel fabricantesDB = ListarPorId(id);
+         public bool Deletar(int id)
+         {
+             FabricantesModel fabricantesDB = ListarPorId(id);
 
-            if (fabricantesDB == null) throw new Exception("Houve um erro ao apagar os dados do fabricante!");
+             if (fabricantesDB == null) throw new Exception("Houve um erro ao apagar os dados do fabricante!");
 
-            _context.Fabricantes.Remove(fabricantesDB);
-            _context.SaveChanges();
-            return true;
+             _context.Fabricantes.Remove(fabricantesDB);
+             _context.SaveChanges();
+             return true;
 
-        }
+         }
     }
 }

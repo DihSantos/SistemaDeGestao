@@ -28,7 +28,7 @@
 
     <div class="col-md-5">
         <label for="veiculo" class="form-label">Veículo</label>
-        <select type="text" class="form-control" asp-for="VeiculoModelo">
+        <select type="text" class="form-select" asp-for="VeiculoId">
             <option value="" selected disabled>Selecione o veículo</option>
             @{
                 foreach(var veiculos in ViewBag.Veiculos)
@@ -41,12 +41,12 @@
 
     <div class="col-md-5">
         <label for="Concessionaria" class="form-label">Concessionaria</label>
-        <select class="form-control" asp-for="Concessionaria">
+        <select class="form-select" asp-for="Concessionaria">
             <option value="" selected disabled>Selecione a Concessionária</option>
             @{
                 foreach (var concessionarias in ViewBag.Concessionarias)
                 {
-                    <option value="@concessionarias.Id">@concessionarias.Concessionaria</option>
+                    <option value="@concessionarias.Concessionaria">@concessionarias.Concessionaria</option>
                 }
             }
         </select>
