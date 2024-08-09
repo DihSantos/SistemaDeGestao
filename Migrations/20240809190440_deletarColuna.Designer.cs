@@ -12,8 +12,8 @@ using SistemaDeGestao.Data;
 namespace SistemaDeGestao.Migrations
 {
     [DbContext(typeof(BancoContent))]
-    [Migration("20240809134804_CriarTabelas")]
-    partial class CriarTabelas
+    [Migration("20240809190440_deletarColuna")]
+    partial class deletarColuna
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,10 +51,7 @@ namespace SistemaDeGestao.Migrations
                         .HasColumnType("char(2)");
 
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Rua")
                         .IsRequired()
@@ -75,14 +72,12 @@ namespace SistemaDeGestao.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("AnoFundacao")
-                        .HasColumnType("int");
+                    b.Property<string>("AnoFundacao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("PaisOrigem")
                         .IsRequired()

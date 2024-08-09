@@ -10,7 +10,27 @@
 <div class="text-center">
 
     <h3 style="color:#585858">Listagem de Fabricantes</h3>
+
     <br />
+
+    @if(TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button style="border-radius: 50px" type="button" class="btn btn-close btn-sm close-alert"></button>
+           @TempData["MensagemSucesso"]
+        </div>
+    }  
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button style="border-radius: 50px" type="button" class="btn btn-close btn-sm close-alert"></button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
         <a class="waves-effect waves-light btn" role="button" asp-controller="Fabricantes" asp-action="Cadastrar">Adcionar novo fabricante</a>
     </div>

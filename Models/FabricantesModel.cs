@@ -6,14 +6,16 @@ namespace SistemaDeGestao.Models
 {
     public class FabricantesModel
     {
-        public int Id { get; set; }
-        
         [Key]
-        [MaxLength(100), MinLength(10)]
+        [MaxLength(100), MinLength(2)]
+        [Required(ErrorMessage = "Digite o nome do Fabricante")]
         public string Fabricante { get; set; }
-        [MaxLength(50), MinLength(4)]
+        [MaxLength(50), MinLength(2)]
+        [Required(ErrorMessage = "Digite o País de Origem")]
         public string PaisOrigem { get; set; }
-        public int AnoFundacao { get; set; }
+        [Required(ErrorMessage = "Digite o Ano")]
+        public string AnoFundacao { get; set; }
+        [Required(ErrorMessage = "Digite a url do website")]
         [Url(ErrorMessage = "A url informada não é válida!")]
         public string Website { get; set; }
 

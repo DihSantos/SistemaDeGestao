@@ -16,7 +16,7 @@ namespace SistemaDeGestao.Repository
         {
             return _context.Concessionarias.FirstOrDefault(x => x.Id == id);
         }
-
+       
         public List<ConcessionariasModel> GetAll()
         {
             return _context.Concessionarias.ToList();

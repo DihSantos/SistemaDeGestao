@@ -48,13 +48,16 @@ namespace SistemaDeGestao.Controllers
             VeiculosModel veiculos = _veiculosRepository.ListarPorId(vendas.VeiculoId);
             var veiculomodelo = veiculos.Modelo;
             vendas.VeiculoModelo = veiculomodelo;
-            _vendasRepository.Registrar(vendas);
-            //LoadData();
-            //float preco = PrecoVenda;
-            //int idVeiculo = VeiculoModelo;
-            //if (_vendasService.PrecoValido(preco, idVeiculo)) 
-
-            return RedirectToAction("Index");
+            
+            float preco = vendas.PrecoVenda;
+            int idVeiculo = vendas.VeiculoId;
+            if (_vendasService.PrecoValido(preco, idVeiculo))
+            {
+                _vendasRepository.Registrar(vendas);
+                return RedirectToAction("Index");
+            }
+            return View(vendas);
+            
         }
 
         public IActionResult Detalhes()

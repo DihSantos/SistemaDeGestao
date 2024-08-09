@@ -9,24 +9,28 @@
 
 <form asp-controller="Fabricantes" asp-action="Cadastrar" method="post" class="row g-3 ">
 
-    <div class="row-cols-md-6">
+    <div class="row-cols-md-6" >
         <label for="nomeFabricante" class="form-label">Nome do Fabricante</label>
         <input type="text" asp-for="Fabricante" class="form-control" placeholder="Digite o nome do fabricante">
+        @Html.ValidationMessageFor(x => x.Fabricante)
     </div>
 
     <div class="row-cols-md-6">
         <label for="paisOrigem" class="form-label">País de Origem</label>
         <input type="text" asp-for="PaisOrigem" class="form-control" placeholder="Digite o país de origem">
+        @Html.ValidationMessageFor(x => x.PaisOrigem)
     </div>
 
     <div class="col-md-6">
         <label for="anoFundacao" class="form-label">Ano de Fundação</label>
         <input type="text" asp-for="AnoFundacao" class="form-control" placeholder="Digite o ano">
+        @Html.ValidationMessageFor(x => x.AnoFundacao)
     </div>
 
     <div class="col-md-6">
         <label for="basic-url" class="form-label">Website</label>
         <input type="text" asp-for="Website" class="form-control" placeholder="Digite a URL">
+        @Html.ValidationMessageFor(x => x.Website)
     </div>
 
     <div class="col-12">

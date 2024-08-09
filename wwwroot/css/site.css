@@ -21,3 +21,16 @@ body {
   margin-bottom: 60px;
   background: #f4f4f4
 }
+
+.field-validation-error {
+    color: #FF5252;
+}
+
+.close-alert {
+    display: flex;
+    position: absolute;
+    left: 97.9%;
+    top: -15px;
+    width: 5px;
+    height: 6px;
+}
