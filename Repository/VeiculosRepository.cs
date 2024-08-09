@@ -6,26 +6,26 @@ namespace SistemaDeGestao.Repository
 {
     public class VeiculosRepository : IVeiculosRepository
     {
-        private readonly BancoContext _bancoContext;
+        private readonly BancoContent _context;
 
-        public VeiculosRepository(BancoContext bancoContext)
+        public VeiculosRepository(BancoContent bancoContext)
         {
-            _bancoContext = bancoContext;
+            _context = bancoContext;
         }
 
         public VeiculosModel ListarPorId(int id)
         {
-            return _bancoContext.Veiculos.FirstOrDefault(x => x.Id == id);
+            return _context.Veiculos.FirstOrDefault(x => x.Id == id);
         }
 
         public List<VeiculosModel> GetAll()
         {
-            return _bancoContext.Veiculos.ToList();
+            return _context.Veiculos.ToList();
         }
         public VeiculosModel Cadastrar(VeiculosModel veiculos)
         {
-            _bancoContext.Veiculos.Add(veiculos);
-            _bancoContext.SaveChanges();
+            _context.Veiculos.Add(veiculos);
+            _context.SaveChanges();
             return veiculos;
         }
 
@@ -41,8 +41,8 @@ namespace SistemaDeGestao.Repository
             veiculosDB.TipoVeiculo = veiculos.TipoVeiculo;
             veiculosDB.Descricao = veiculos.Descricao;
 
-            _bancoContext.Veiculos.Update(veiculosDB);
-            _bancoContext.SaveChanges(true);
+            _context.Veiculos.Update(veiculosDB);
+            _context.SaveChanges(true);
 
             return veiculosDB;
 
@@ -53,8 +53,8 @@ namespace SistemaDeGestao.Repository
 
             if (veiculosDB == null) throw new Exception("Houve um erro ao apagar os dados do veículo!");
 
-            _bancoContext.Veiculos.Remove(veiculosDB);
-            _bancoContext.SaveChanges();
+            _context.Veiculos.Remove(veiculosDB);
+            _context.SaveChanges();
             return true;
         }
     }

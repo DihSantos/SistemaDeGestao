@@ -6,26 +6,26 @@ namespace SistemaDeGestao.Repository
 {
     public class ConcessionariasRepository : IConcessionariasRepository
     {
-        private readonly BancoContext _bancoContext;
-        public ConcessionariasRepository(BancoContext bancoContext)
+        private readonly BancoContent _context;
+        public ConcessionariasRepository(BancoContent bancoContext)
         {
-            _bancoContext = bancoContext;
+            _context = bancoContext;
         }
 
         public ConcessionariasModel ListarPorId(int id)
         {
-            return _bancoContext.Concessionarias.FirstOrDefault(x => x.Id == id);
+            return _context.Concessionarias.FirstOrDefault(x => x.Id == id);
         }
 
         public List<ConcessionariasModel> GetAll()
         {
-            return _bancoContext.Concessionarias.ToList();
+            return _context.Concessionarias.ToList();
         }
 
         public ConcessionariasModel Adicionar(ConcessionariasModel concessionarias)
         {
-            _bancoContext.Concessionarias.Add(concessionarias);
-            _bancoContext.SaveChanges();
+            _context.Concessionarias.Add(concessionarias);
+            _context.SaveChanges();
             return concessionarias;
         }
         public ConcessionariasModel Atualizar(ConcessionariasModel concessionarias)
@@ -43,8 +43,8 @@ namespace SistemaDeGestao.Repository
             concessionariasDB.Email = concessionarias.Email;
             concessionariasDB.CapacidadeVeiculos = concessionarias.CapacidadeVeiculos;
 
-            _bancoContext.Concessionarias.Update(concessionariasDB);
-            _bancoContext.SaveChanges(true);
+            _context.Concessionarias.Update(concessionariasDB);
+            _context.SaveChanges(true);
 
             return concessionariasDB;
         }
@@ -55,8 +55,8 @@ namespace SistemaDeGestao.Repository
 
             if (concessionariasDB == null) throw new Exception("Houve um erro ao apagar os dados do fabricante!");
 
-            _bancoContext.Concessionarias.Remove(concessionariasDB);
-            _bancoContext.SaveChanges();
+            _context.Concessionarias.Remove(concessionariasDB);
+            _context.SaveChanges();
             return true;
 
         }

@@ -6,27 +6,27 @@ namespace SistemaDeGestao.Repository
 {
     public class VendasRepository : IVendasRepository
     {
-        private readonly BancoContext _bancoContext;
+        private readonly BancoContent _context;
 
-        public VendasRepository(BancoContext bancoContext)
+        public VendasRepository(BancoContent bancoContext)
         {
-            _bancoContext = bancoContext;
+            _context = bancoContext;
         }
 
         public VendasModel ListarPorId(int id)
         {
-            return _bancoContext.Vendas.FirstOrDefault(x => x.Id == id);
+            return _context.Vendas.FirstOrDefault(x => x.Id == id);
         }
 
         public List<VendasModel> GetAll()
         {
-            return _bancoContext.Vendas.ToList();
+            return _context.Vendas.ToList();
         }
 
         public VendasModel Registrar(VendasModel vendas)
         {
-            _bancoContext.Vendas.Add(vendas);
-            _bancoContext.SaveChanges();
+            _context.Vendas.Add(vendas);
+            _context.SaveChanges();
             return vendas;
         }
 
@@ -36,8 +36,8 @@ namespace SistemaDeGestao.Repository
 
             if (vendasDB == null) throw new Exception("Houve um erro ao apagar a venda!");
 
-            _bancoContext.Vendas.Remove(vendasDB);
-            _bancoContext.SaveChanges();
+            _context.Vendas.Remove(vendasDB);
+            _context.SaveChanges();
             return true;
         }
 

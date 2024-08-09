@@ -6,26 +6,26 @@ namespace SistemaDeGestao.Repository
 {
     public class FabricantesRepository : IFabricantesRepository
     {
-        private readonly BancoContext _bancoContext;
-        public FabricantesRepository(BancoContext bancoContext)
+        private readonly BancoContent _context;
+        public FabricantesRepository(BancoContent bancoContext)
         {
-            _bancoContext = bancoContext;
+            _context = bancoContext;
         }
 
         public FabricantesModel ListarPorId(int id)
         {
-            return _bancoContext.Fabricantes.FirstOrDefault(x => x.Id == id);
+            return _context.Fabricantes.FirstOrDefault(x => x.Id == id);
         }
 
         public List<FabricantesModel> GetAll()
         {
-            return _bancoContext.Fabricantes.ToList();
+            return _context.Fabricantes.ToList();
         }
 
         public FabricantesModel Adicionar(FabricantesModel fabricantes)
         {
-            _bancoContext.Fabricantes.Add(fabricantes);
-            _bancoContext.SaveChanges();
+            _context.Fabricantes.Add(fabricantes);
+            _context.SaveChanges();
             return fabricantes;
         }
         public FabricantesModel Atualizar(FabricantesModel fabricantes)
@@ -39,8 +39,8 @@ namespace SistemaDeGestao.Repository
             fabricantesDB.AnoFundacao = fabricantes.AnoFundacao;
             fabricantesDB.Website = fabricantes.Website;
 
-            _bancoContext.Fabricantes.Update(fabricantesDB);
-            _bancoContext.SaveChanges(true);
+            _context.Fabricantes.Update(fabricantesDB);
+            _context.SaveChanges(true);
 
             return fabricantesDB;
         }
@@ -51,8 +51,8 @@ namespace SistemaDeGestao.Repository
 
             if (fabricantesDB == null) throw new Exception("Houve um erro ao apagar os dados do fabricante!");
 
-            _bancoContext.Fabricantes.Remove(fabricantesDB);
-            _bancoContext.SaveChanges();
+            _context.Fabricantes.Remove(fabricantesDB);
+            _context.SaveChanges();
             return true;
 
         }

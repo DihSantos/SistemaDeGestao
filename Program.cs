@@ -13,7 +13,7 @@ internal class Program
         var provider = builder.Services.BuildServiceProvider();
         var configuration = provider.GetRequiredService<IConfiguration>();
         builder.Services.AddEntityFrameworkSqlServer()
-            .AddDbContext<BancoContext>(item => item.UseSqlServer(configuration.GetConnectionString("DataBase")));
+            .AddDbContext<BancoContent>(item => item.UseSqlServer(configuration.GetConnectionString("DataBase")));
 
 
         var app = builder.Build();
