@@ -1,10 +1,9 @@
-﻿using GestaoDeVendas.Interface;
-using GestaoDeVendas.Models;
-using GestaoDeVendas.Repository;
+﻿using SistemaDeGestao.Interface;
+using SistemaDeGestao.Models;
+using SistemaDeGestao.Repository;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace GestaoDeVendas.Controllers
+namespace SistemaDeGestao.Controllers
 {
     public class VendasController : Controller
     {

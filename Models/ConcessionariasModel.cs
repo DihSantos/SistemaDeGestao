@@ -4,6 +4,7 @@ namespace SistemaDeGestao.Models
 {
     public class ConcessionariasModel
     {
+        public int Id { get; set; }
         [Key]
         [MaxLength(100), MinLength(5)]
         public string Concessionaria { get; set; }

@@ -1,8 +1,8 @@
-﻿using GestaoDeVendas.Data;
-using GestaoDeVendas.Interface;
-using GestaoDeVendas.Models;
+﻿using SistemaDeGestao.Data;
+using SistemaDeGestao.Interface;
+using SistemaDeGestao.Models;
 
-namespace GestaoDeVendas.Repository
+namespace SistemaDeGestao.Repository
 {
     public class FabricantesRepository : IFabricantesRepository
     {

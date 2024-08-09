@@ -1,8 +1,8 @@
-﻿using GestaoDeVendas.Data;
-using GestaoDeVendas.Interface;
-using GestaoDeVendas.Models;
+﻿using SistemaDeGestao.Data;
+using SistemaDeGestao.Interface;
+using SistemaDeGestao.Models;
 
-namespace GestaoDeVendas.Repository
+namespace SistemaDeGestao.Repository
 {
     public class VeiculosRepository : IVeiculosRepository
     {
@@ -10,7 +10,7 @@ namespace GestaoDeVendas.Repository
 
         public VeiculosRepository(BancoContext bancoContext)
         {
-            this._bancoContext = bancoContext;
+            _bancoContext = bancoContext;
         }
 
         public VeiculosModel ListarPorId(int id)

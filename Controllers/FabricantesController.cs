@@ -1,8 +1,8 @@
-﻿using GestaoDeVendas.Interface;
-using GestaoDeVendas.Models;
+﻿using SistemaDeGestao.Interface;
+using SistemaDeGestao.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GestaoDeVendas.Controllers
+namespace SistemaDeGestao.Controllers
 {
     public class FabricantesController : Controller
     {

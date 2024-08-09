@@ -4,6 +4,7 @@ namespace SistemaDeGestao.Models
 {
     public class FabricantesModel
     {
+        public int Id { get; set; }
         [Key]
         [MaxLength(100), MinLength(10)]
         public string Fabricante { get; set; }

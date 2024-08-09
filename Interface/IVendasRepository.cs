@@ -1,6 +1,6 @@
-﻿using GestaoDeVendas.Models;
+﻿using SistemaDeGestao.Models;
 
-namespace GestaoDeVendas.Interface
+namespace SistemaDeGestao.Interface
 {
     public interface IVendasRepository
     {
