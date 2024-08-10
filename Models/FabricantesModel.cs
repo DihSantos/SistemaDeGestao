@@ -6,6 +6,8 @@ namespace SistemaDeGestao.Models
 {
     public class FabricantesModel
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         [Key]
         [MaxLength(100), MinLength(2)]
         [Required(ErrorMessage = "Digite o nome do Fabricante")]

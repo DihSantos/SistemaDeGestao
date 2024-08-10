@@ -23,6 +23,7 @@ internal class Program
         builder.Services.AddScoped<IConcessionariasRepository, ConcessionariasRepository>();
         builder.Services.AddScoped<IVendasRepository, VendasRepository>();
         builder.Services.AddScoped<IVendasService, VendasService>();
+        builder.Services.AddScoped<IUsuariosRepository, UsuariosRepository>();
 
 
         var app = builder.Build();

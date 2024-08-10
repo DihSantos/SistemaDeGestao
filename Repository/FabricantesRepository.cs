@@ -39,7 +39,7 @@ namespace SistemaDeGestao.Repository
              fabricantesDB.AnoFundacao = fabricantes.AnoFundacao;
              fabricantesDB.Website = fabricantes.Website;
 
-             _context.Fabricantes.Update(fabricantesDB);
+             //_context.Fabricantes.Update(fabricantesDB);
              _context.SaveChanges(true);
 
              return fabricantesDB;

@@ -13,6 +13,7 @@ namespace SistemaDeGestao.Data
         public DbSet<VeiculosModel> Veiculos { get; set; }
         public DbSet<ConcessionariasModel> Concessionarias { get; set; }
         public DbSet<VendasModel> Vendas { get; set; }
+        public DbSet<UsuarioModel> Usuarios { get; set; }
 
 
     }

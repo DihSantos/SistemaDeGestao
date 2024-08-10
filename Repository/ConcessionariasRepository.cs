@@ -43,7 +43,7 @@ namespace SistemaDeGestao.Repository
             concessionariasDB.Email = concessionarias.Email;
             concessionariasDB.CapacidadeVeiculos = concessionarias.CapacidadeVeiculos;
 
-            _context.Concessionarias.Update(concessionariasDB);
+            //_context.Concessionarias.Update(concessionariasDB);
             _context.SaveChanges(true);
 
             return concessionariasDB;

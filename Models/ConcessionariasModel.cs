@@ -5,6 +5,8 @@ namespace SistemaDeGestao.Models
 {
     public class ConcessionariasModel
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         [Key]
         [MaxLength(100), MinLength(4)]
         public string Concessionaria { get; set; }

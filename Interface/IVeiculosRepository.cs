@@ -6,7 +6,7 @@ namespace SistemaDeGestao.Interface
     {
         VeiculosModel ListarPorId(int id);
         List<VeiculosModel> GetAll();
-        VeiculosModel Cadastrar(VeiculosModel veiculos);
+        VeiculosModel Adicionar(VeiculosModel veiculos);
         VeiculosModel Atualizar(VeiculosModel veiculos);
         bool Deletar(int id);
     }

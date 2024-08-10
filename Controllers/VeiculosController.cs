@@ -48,7 +48,7 @@ namespace SistemaDeGestao.Controllers
         [HttpPost]
         public IActionResult Cadastrar(VeiculosModel veiculos)
         {
-            _veiculosRepository.Cadastrar(veiculos);
+            _veiculosRepository.Adicionar(veiculos);
 
             return RedirectToAction("Index");
         }
