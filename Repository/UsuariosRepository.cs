@@ -11,6 +11,10 @@ namespace SistemaDeGestao.Repository
         {
             _context = bancoContent;
         }
+        public UsuarioModel GetLogin(string login)
+        {
+           return _context.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
+        }
 
         public UsuarioModel ListarPorId(int id)
         {

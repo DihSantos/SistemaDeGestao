@@ -17,7 +17,7 @@
 
     <div class="row-cols-md-6">
         <label for="email" class="form-label">Email</label>
-        <input type="text" asp-for="Email" class="form-control" placeholder="Digite o Email">
+        <input type="text" asp-for="Email" class="form-control" placeholder="Digite o Email" >
     </div>
 
     <div class="col-md-6">
@@ -28,7 +28,7 @@
     <div class="col-md-6">
         <label for="basic-url" class="form-label">Perfil</label>       
         <select class="form-select" asp-for="Perfil">
-            <option value="0">Selecione o perfil</option>
+            <option value="">Selecione o perfil</option>
             <option value="@PerfilEnum.Admin">Administrador</option>
             <option value="@PerfilEnum.Vendedor">Vendedor</option>
             <option value="@PerfilEnum.Gerente">Gerente</option>
