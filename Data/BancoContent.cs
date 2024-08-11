@@ -15,6 +15,14 @@ namespace SistemaDeGestao.Data
         public DbSet<VendasModel> Vendas { get; set; }
         public DbSet<UsuarioModel> Usuarios { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<VendasModel>()
+                .HasIndex(u => u.ProtocoloVenda)
+                .IsUnique();
+        }
 
     }
 }

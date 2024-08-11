@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaDeGestao.Data;
+using SistemaDeGestao.Helper;
 using SistemaDeGestao.Interface;
 using SistemaDeGestao.Repository;
 using SistemaDeGestao.Service;
@@ -18,12 +19,21 @@ internal class Program
         builder.Services.AddEntityFrameworkSqlServer()
             .AddDbContext<BancoContent>(item => item.UseSqlServer(configuration.GetConnectionString("DataBase")));
 
+        builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
         builder.Services.AddScoped<IFabricantesRepository, FabricantesRepository>();
         builder.Services.AddScoped<IVeiculosRepository, VeiculosRepository>();
         builder.Services.AddScoped<IConcessionariasRepository, ConcessionariasRepository>();
         builder.Services.AddScoped<IVendasRepository, VendasRepository>();
         builder.Services.AddScoped<IVendasService, VendasService>();
         builder.Services.AddScoped<IUsuariosRepository, UsuariosRepository>();
+        builder.Services.AddScoped<ISessao, Sessao>();
+
+        builder.Services.AddSession(o =>
+        {
+            o.Cookie.HttpOnly = true;
+            o.Cookie.IsEssential = true;
+        });
 
 
         var app = builder.Build();
@@ -42,6 +52,7 @@ internal class Program
         app.UseRouting();
 
         app.UseAuthorization();
+        app.UseSession();
 
         app.MapControllerRoute(
             name: "default",

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaDeGestao.Data;
 
@@ -11,9 +12,11 @@ using SistemaDeGestao.Data;
 namespace SistemaDeGestao.Migrations
 {
     [DbContext(typeof(BancoContent))]
-    partial class BancoContentModelSnapshot : ModelSnapshot
+    [Migration("20240811022850_ApagarTabelaVendas")]
+    partial class ApagarTabelaVendas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -202,9 +205,8 @@ namespace SistemaDeGestao.Migrations
                     b.Property<float>("PrecoVenda")
                         .HasColumnType("real");
 
-                    b.Property<string>("ProtocoloVenda")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ProtocoloVenda")
+                        .HasColumnType("int");
 
                     b.Property<int>("VeiculoId")
                         .HasColumnType("int");
@@ -216,9 +218,6 @@ namespace SistemaDeGestao.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Concessionaria");
-
-                    b.HasIndex("ProtocoloVenda")
-                        .IsUnique();
 
                     b.HasIndex("VeiculoId");
 

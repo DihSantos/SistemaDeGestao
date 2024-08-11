@@ -6,6 +6,10 @@
 
 $(document).ready(function () {
     getDataTable('#table-usuarios')
+    getDataTable('#table-fabricante')
+    getDataTable('#table-concessionaria')
+    getDataTable('#table-veiculo')
+    getDataTable('#table-vendas')
 })
 
 function getDataTable(id) {

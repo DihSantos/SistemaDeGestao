@@ -2,9 +2,11 @@
 using SistemaDeGestao.Models;
 using SistemaDeGestao.Repository;
 using Microsoft.AspNetCore.Mvc;
+using SistemaDeGestao.Filters;
 
 namespace SistemaDeGestao.Controllers
 {
+    [PaginaParaUsuarioLogado]
     public class VendasController : Controller
     {
         private readonly IVendasRepository _vendasRepository;
@@ -19,26 +21,29 @@ namespace SistemaDeGestao.Controllers
             _vendasRepository = vendasRepository;
             _vendasService = vendasService;
         }
+
         public IActionResult Index()
         {
             List<VendasModel> vendas = _vendasRepository.GetAll();
+         
             return View(vendas);
         }
+
         public IActionResult Registrar()
         {
             LoadData();
             return View();
         }
 
-        public IActionResult DeletarConfirmacao(int ProtocoloVenda)
+        public IActionResult DeletarConfirmacao(int Id)
         {
-            VendasModel veiculos = _vendasRepository.ListarPorId(ProtocoloVenda);
-            return View(veiculos);
+            VendasModel vendas = _vendasRepository.ListarPorId(Id);
+            return View(vendas);
         }
 
-        public IActionResult Deletar(int ProtocoloVenda)
+        public IActionResult Deletar(int Id)
         {
-            _vendasRepository.Deletar(ProtocoloVenda);
+            _vendasRepository.Deletar(Id);
             return RedirectToAction("Index");
         }
 

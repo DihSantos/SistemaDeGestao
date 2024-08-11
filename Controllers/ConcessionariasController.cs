@@ -1,9 +1,11 @@
 ﻿using SistemaDeGestao.Interface;
 using SistemaDeGestao.Models;
 using Microsoft.AspNetCore.Mvc;
+using SistemaDeGestao.Filters;
 
 namespace SistemaDeGestao.Controllers
 {
+    [PaginaParaUsuarioLogado]
     public class ConcessionariasController : Controller
     {
         private readonly IConcessionariasRepository _concessionariasRepository;

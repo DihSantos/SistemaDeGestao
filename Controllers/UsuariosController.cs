@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SistemaDeGestao.Filters;
 using SistemaDeGestao.Interface;
 using SistemaDeGestao.Models;
 using SistemaDeGestao.Repository;
 
 namespace SistemaDeGestao.Controllers
 {
+    [PaginaApenasAdmin]
     public class UsuariosController : Controller
     {
         private readonly IUsuariosRepository _usuariosRepository;

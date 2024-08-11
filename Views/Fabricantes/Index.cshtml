@@ -4,39 +4,40 @@
 }
 
 <div class="d-grid d-md-flex">
-    <a class="waves-effect waves-light btn" role="button" asp-controller="Home" asp-action="Index"><i class="small material-icons">arrow_back</i></a>
+    <a class="btn btn-primary" role="button" asp-controller="Home" asp-action="Index">Voltar</a>
 </div>
 
 <div class="text-center" style="margin-bottom:60px">
 
-    <h3 style="color:#585858">Listagem de Fabricantes</h3>
-
-    @if(TempData["MensagemSucesso"] != null)
+    @if (TempData["MensagemSucesso"] != null)
     {
         <div class="alert alert-success" role="alert">
-            <button style="border-radius: 50px" type="button" class="btn btn-close btn-sm close-alert"></button>
-           @TempData["MensagemSucesso"]
+            <button type="button" class="btn btn-danger btn-sm close-alert">x</button>
+            @TempData["MensagemSucesso"]
         </div>
-    }  
+    }
 
     @if (TempData["MensagemErro"] != null)
     {
         <div class="alert alert-danger" role="alert">
-            <button style="border-radius: 50px" type="button" class="btn btn-close btn-sm close-alert"></button>
+            <button type="button" class="btn btn-danger btn-sm close-alert">x</button>
             @TempData["MensagemErro"]
         </div>
     }
+    <br />
+
+    <h3 style="color:#585858">Listagem de Fabricantes</h3>
 
     <br />
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a class="waves-effect waves-light btn" role="button" asp-controller="Fabricantes" asp-action="Cadastrar">Adcionar novo fabricante</a>
+        <a class="btn btn-primary" role="button" asp-controller="Fabricantes" asp-action="Cadastrar">Adcionar novo fabricante</a>
     </div>
 
     <br />
     <br />
 
-    <table class="table table-striped" id="table-page">
+    <table class="display" id="table-fabricante" style="width:100%">
         <thead>
             <tr style="color:#585858">
                 <th scope="col">#</th>
@@ -50,18 +51,18 @@
         <tbody>
             @if (Model != null && Model.Any())
             {
-                foreach (FabricantesModel fabricantes in Model)
+                foreach (var fabricantes in Model)
                 {
                     <tr>
-                        <td>@fabricantes.Id</td>
+                        <td scope="row">@fabricantes.Id</td>
                         <td>@fabricantes.Fabricante</td>
                         <td>@fabricantes.PaisOrigem</td>
                         <td>@fabricantes.AnoFundacao</td>
                         <td>@fabricantes.Website</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a role="button" class="btn btn-info gap-2" asp-route-id="@fabricantes.Id" asp-controller="Fabricantes" asp-action="Editar"><i class="small material-icons">border_color</i></a>
-                                <a role="button" class="btn btn-danger gap-2" asp-route-id="@fabricantes.Id" asp-controller="Fabricantes" asp-action="DeletarConfirmacao"><i class="small material-icons">delete</i></a>
+                                <a role="button" class="btn btn-primary gap-2" asp-route-id="@fabricantes.Id" asp-controller="Fabricantes" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger gap-2" asp-route-id="@fabricantes.Id" asp-controller="Fabricantes" asp-action="DeletarConfirmacao">Deletar</a>
                             </div>
                         </td>
                     </tr>

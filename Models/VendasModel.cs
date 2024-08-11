@@ -7,7 +7,8 @@ namespace SistemaDeGestao.Models
     public class VendasModel
     {
         [Key]
-        public int ProtocoloVenda { get; set; }
+        public int Id { get; set; }
+        public string ProtocoloVenda { get; set; }
 
         public int VeiculoId { get; set; }
 
