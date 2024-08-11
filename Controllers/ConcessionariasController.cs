@@ -2,10 +2,13 @@
 using SistemaDeGestao.Models;
 using Microsoft.AspNetCore.Mvc;
 using SistemaDeGestao.Filters;
+using SistemaDeGestao.Repository;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaDeGestao.Controllers
 {
-    [PaginaParaUsuarioLogado]
+    [Authorize]
     public class ConcessionariasController : Controller
     {
         private readonly IConcessionariasRepository _concessionariasRepository;
@@ -45,16 +48,38 @@ namespace SistemaDeGestao.Controllers
         [HttpPost]
         public IActionResult Cadastrar(ConcessionariasModel concessionarias)
         {
-            _concessionariasRepository.Adicionar(concessionarias);
-
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _concessionariasRepository.Adicionar(concessionarias);
+                    TempData["MensagemSucesso"] = $"Concessionária cadastrada com sucesso!";
+                    return RedirectToAction("Index");
+                }
+              
+                return View(concessionarias);
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Não foi possível cadastrar a Concessionária! {erro.Message}";
+                return RedirectToAction("Index");
+            }
+            
         }
         [HttpPost]
         public IActionResult Alterar(ConcessionariasModel concessionarias)
         {
-            _concessionariasRepository.Atualizar(concessionarias);
+            if (ModelState.IsValid) 
+            { 
+                _concessionariasRepository.Atualizar(concessionarias);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Editar", concessionarias);
+            }
+            
         }
     }
 }

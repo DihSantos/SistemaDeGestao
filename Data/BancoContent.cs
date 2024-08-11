@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SistemaDeGestao.Models;
 using System.Reflection.Metadata;
 namespace SistemaDeGestao.Data
 {
-    public class BancoContent : DbContext
+    public class BancoContent : IdentityDbContext
     {
         public BancoContent(DbContextOptions<BancoContent> options) : base(options)
         {

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SistemaDeGestao.Data;
 using SistemaDeGestao.Helper;
@@ -14,10 +15,10 @@ internal class Program
         // Add services to the container.
         builder.Services.AddControllersWithViews();
 
-        var provider = builder.Services.BuildServiceProvider();
-        var configuration = provider.GetRequiredService<IConfiguration>();
-        builder.Services.AddEntityFrameworkSqlServer()
-            .AddDbContext<BancoContent>(item => item.UseSqlServer(configuration.GetConnectionString("DataBase")));
+        var connection = builder.Configuration.GetConnectionString("DataBase");
+        builder.Services.AddDbContext<BancoContent>(options => options.UseSqlServer(connection));
+
+        builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<BancoContent>();
 
         builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -51,8 +52,9 @@ internal class Program
 
         app.UseRouting();
 
+        app.UseAuthentication();
         app.UseAuthorization();
-        app.UseSession();
+        //app.UseSession();
 
         app.MapControllerRoute(
             name: "default",

@@ -9,24 +9,24 @@
 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
     <ul class="navbar-nav flex-grow-1">
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" style="font-size:1.1em; font-weight:500">Home</a>
+            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index" style="font-size:1.1em; font-weight:500">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Vendas" asp-action="Index" style="font-size:1.1em; font-weight:500">Vendas</a>
+            <a class="nav-link" asp-area="" asp-controller="Vendas" asp-action="Index" style="font-size:1.1em; font-weight:500">Vendas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Veiculos" asp-action="Index" style="font-size:1.1em; font-weight:500">Veículos</a>
+            <a class="nav-link" asp-area="" asp-controller="Veiculos" asp-action="Index" style="font-size:1.1em; font-weight:500">Veículos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Concessionarias" asp-action="Index" style="font-size:1.1em; font-weight:500">Concessionarias</a>
+            <a class="nav-link" asp-area="" asp-controller="Concessionarias" asp-action="Index" style="font-size:1.1em; font-weight:500">Concessionarias</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Fabricantes" asp-action="Index" style="font-size:1.1em; font-weight:500">Fabricantes</a>
+            <a class="nav-link" asp-area="" asp-controller="Fabricantes" asp-action="Index" style="font-size:1.1em; font-weight:500">Fabricantes</a>
         </li>
         @if (Model.Perfil == SistemaDeGestao.Enums.PerfilEnum.Admin)
         {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index" style="font-size:1.1em; font-weight:500">Usuários</a>
+                <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Index" style="font-size:1.1em; font-weight:500">Usuários</a>
             </li>
         }
     </ul>
@@ -35,7 +35,7 @@
 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
     <ul class="navbar-nav flex-grow-1">
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Sair" style="font-size:1.1em; font-weight:500">Sair</a>
+            <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Sair" style="font-size:1.1em; font-weight:500">Sair</a>
         </li>
     </ul>
 </div>

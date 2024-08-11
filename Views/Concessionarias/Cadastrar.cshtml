@@ -12,44 +12,52 @@
     <div class="row-cols-md-6">
         <label for="nomeConcessionaria" class="form-label">Nome da Concessionária</label>
         <input type="text" asp-for="Concessionaria" class="form-control" placeholder="Digite o nome da concessionária">
+        @Html.ValidationMessageFor(x => x.Concessionaria)
     </div>
 
     <div class="row-cols-md-6">
         <label for="rua" class="form-label">Rua</label>
         <input type="text" asp-for="Rua" class="form-control" placeholder="Digite a rua">
+        @Html.ValidationMessageFor(x => x.Rua)
     </div>
 
     <div class="col-md-6">
         <label for="cidade" class="form-label">Cidade</label>
         <input type="text" asp-for="Cidade" class="form-control" placeholder="Digite a cidade">
+        @Html.ValidationMessageFor(x => x.Cidade)
     </div>
 
     <div class="col-md-6">
         <label for="estado" class="form-label">Estado</label>
         <input type="text" asp-for="Estado" class="form-control" placeholder="Digite o estado">
+        @Html.ValidationMessageFor(x => x.Estado)
     </div>
 
     <div class="col-md-6">
         <label for="cep" class="form-label">CEP</label>
         <input type="text" asp-for="CEP" class="form-control" placeholder="Digite o CEP">
+        @Html.ValidationMessageFor(x => x.CEP)
     </div>
 
     <div class="col-md-6">
         <label for="telefone" class="form-label">Telefone</label>
         <input type="text" asp-for="Telefone" class="form-control" placeholder="Digite o telefone">
+        @Html.ValidationMessageFor(x => x.Telefone)
     </div>
     <div class="col-md-6">
         <label for="email" class="form-label">E-mail</label>
-        <input type="text" asp-for="Email" class="form-control" placeholder="Digite o e-mail">
+        <input type="email" asp-for="Email" class="form-control" placeholder="Digite o e-mail">
+        @Html.ValidationMessageFor(x => x.Email)
     </div>
 
     <div class="col-md-6">
         <label for="capacidadeVeiculos" class="form-label">Capacide de Veículos</label>
         <input type="text" asp-for="CapacidadeVeiculos" class="form-control" placeholder="Digite a Capacidade de Veículos">
+        @Html.ValidationMessageFor(x => x.CapacidadeVeiculos)
     </div>
 
     <div class="col-12">
-        <button class="waves-effect waves-light btn" type="submit">Salvar dados</button>
-        <a class="btn btn-light" asp-controller="Fabricantes" asp-action="Index" role="button">Voltar</a>
+        <button class="btn btn-primary" type="submit">Cadastrar</button>
+        <a class="btn btn-light" asp-controller="Concessionarias" asp-action="Index" role="button">Voltar</a>
     </div>
 </form>

@@ -3,9 +3,16 @@
     ViewData["Title"] = "Lista de Veículos";
 }
 
-<div class="d-grid d-md-flex">
-    <a class="btn btn-primary" role="button" asp-controller="Home" asp-action="Index">Voltar</a>
-</div>
+<header class="d-flex justify-content-between align-items-center">
+    <div>
+        <h3 style="color:#585858">Veículos</h3>
+    </div>
+
+    <div>
+        <a class="btn btn-primary" role="button" asp-controller="Usuarios" asp-action="Cadastrar">Novo Veículo</a>
+    </div>
+</header>
+<hr />
 
 <div class="text-center" style="margin-bottom:60px">
 
@@ -24,15 +31,7 @@
             @TempData["MensagemErro"]
         </div>
     }
-    <br />
 
-    <h3 style="color:#585858">Listagem de Veículos</h3>
-    <br />
-    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a class="btn btn-primary" role="button" asp-controller="Veiculos" asp-action="Cadastrar">Adicionar novo Veículo</a>
-    </div>
-
-    <br />
     <br />
 
     <table class="display" id="table-veiculo" style="width:100%">
