@@ -23,18 +23,18 @@
 
     <div class="col-md-6">
         <label for="anoFundacao" class="form-label">Ano de Fundação</label>
-        <input type="text" asp-for="AnoFundacao" class="form-control" placeholder="Digite o ano">
+        <input type="text" asp-for="AnoFundacao" class="form-control" min="1880" max="@DateTime.Now.Year" placeholder="Digite o ano">
         @Html.ValidationMessageFor(x => x.AnoFundacao)
     </div>
 
     <div class="col-md-6">
-        <label for="basic-url" class="form-label">Website</label>
+        <label asp-for="Website" class="form-label"></label>
         <input type="text" asp-for="Website" class="form-control" placeholder="Digite a URL">
-        @Html.ValidationMessageFor(x => x.Website)
+        <span asp-validation-for="Website" class="text-danger"></span>
     </div>
 
     <div class="col-12">
-        <button class="waves-effect waves-light btn" type="submit">Cadastrar</button>
+        <button class="btn btn-primary" type="submit">Cadastrar</button>
         <a class="btn btn-light" asp-controller="Fabricantes" asp-action="Index" role="button">Voltar</a>
     </div>
 </form>

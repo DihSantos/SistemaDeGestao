@@ -15,7 +15,8 @@ namespace SistemaDeGestao.Models
         public string VeiculoModelo { get; set; }
 
         public string Concessionaria { get; set; }
-        [Required, Column(TypeName = "char(14)")]
+        [Required(ErrorMessage = "O cpf é obrigatório!")]
+        [Column(TypeName = "char(11)")]
         public string ClienteCPF { get; set; }
 
         public string NomeCliente { get; set; }

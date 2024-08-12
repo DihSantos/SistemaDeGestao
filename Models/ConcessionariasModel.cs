@@ -19,6 +19,7 @@ namespace SistemaDeGestao.Models
         [Column(TypeName = "char(2)")]
         public string Estado { get; set; }
         [Required(ErrorMessage = "Informe o CEP")]
+        [RegularExpression(@"^\d{5}-\d{3}$", ErrorMessage = "O CEP deve estar no formato 12345-678.")]
         [Column(TypeName ="char(9)")]
         public int CEP { get; set; }
         [Phone(ErrorMessage = "Formato de telefone inválido")]
@@ -29,5 +30,6 @@ namespace SistemaDeGestao.Models
         [Required(ErrorMessage = "Digite a capacidade")]
         public int CapacidadeVeiculos { get; set; }
 
+        public virtual VendasModel Vendas { get; set; }
     }
 }

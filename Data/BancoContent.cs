@@ -21,6 +21,9 @@ namespace SistemaDeGestao.Data
             modelBuilder.Entity<VendasModel>()
                 .HasIndex(u => u.ProtocoloVenda)
                 .IsUnique();
+            modelBuilder.Entity<VendasModel>()
+                .HasIndex(u => u.ClienteCPF)
+                .IsUnique();
         }
 
     }

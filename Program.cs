@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SistemaDeGestao.Data;
@@ -26,6 +27,19 @@ internal class Program
         builder.Services.AddScoped<IConcessionariasRepository, ConcessionariasRepository>();
         builder.Services.AddScoped<IVendasRepository, VendasRepository>();
         builder.Services.AddScoped<IVendasService, VendasService>();
+
+        builder.Services.Configure<IdentityOptions>(options =>
+        {
+            options.Password.RequiredLength = 6;
+            options.Password.RequireNonAlphanumeric = true;
+        });
+
+        builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+        {
+            options.Cookie.Name = "AspNetCore.Cookies";
+            options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+            options.SlidingExpiration = true;
+        });    
         
 
 

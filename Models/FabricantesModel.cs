@@ -17,10 +17,10 @@ namespace SistemaDeGestao.Models
         public string PaisOrigem { get; set; }
         [Required(ErrorMessage = "Digite o Ano")]
         public string AnoFundacao { get; set; }
-        [Required(ErrorMessage = "Digite a url do website")]
+        [Required(ErrorMessage = "A url do Website é obrigatória")]
         [Url(ErrorMessage = "A url informada não é válida!")]
         public string Website { get; set; }
 
-        public ICollection<VeiculosModel> Veiculos { get; set; }
+        public virtual VeiculosModel Veiculos { get; set; }
     }
 }

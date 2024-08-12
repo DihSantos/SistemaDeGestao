@@ -24,8 +24,8 @@
     </div>
 
     <div class="col-md-6">
-        <label for="anoFundacao" class="form-label">Ano de Fundação</label>
-        <input type="text" asp-for="AnoFundacao" class="form-control" placeholder="Digite o ano">
+        <label for="anoFundacao" class="form-label">Ano da Fundação</label>
+        <input type="text" asp-for="AnoFundacao" class="form-control" min="1880" max="@DateTime.Now.Year" placeholder="Digite o ano">
         @Html.ValidationMessageFor(x => x.AnoFundacao)
     </div>
 

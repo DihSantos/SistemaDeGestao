@@ -23,6 +23,6 @@ namespace SistemaDeGestao.Models
         public string? Descricao { get; set; }
         [ForeignKey("Fabricante")]
         public FabricantesModel Fabricantes { get; set; }
-        public ICollection<VendasModel> Vendas { get; set; }
+        public virtual VendasModel Vendas { get; set; }
     }
 }

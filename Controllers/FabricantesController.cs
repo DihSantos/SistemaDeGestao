@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaDeGestao.Controllers
 {
-    
+    [Authorize]
     public class FabricantesController : Controller
     {
         private readonly IFabricantesRepository _fabricantesRepository;

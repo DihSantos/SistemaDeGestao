@@ -18,7 +18,7 @@
 
     <div class="row-cols-md-6">
         <label for="anoFabricacao" class="form-label">Ano de Fabricação</label>
-        <input type="text" asp-for="AnoFabricacao" class="form-control" placeholder="Digite o ano de fabricação do veículo">
+        <input type="text" asp-for="AnoFabricacao" class="form-control" min="1880" max="@DateTime.Now.Year" placeholder="Digite o ano de fabricação do veículo">
     </div>
 
     <div class="col-md-4">

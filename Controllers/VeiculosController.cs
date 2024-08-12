@@ -1,10 +1,11 @@
 ﻿using SistemaDeGestao.Interface;
 using SistemaDeGestao.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaDeGestao.Controllers
 {
-   
+    [Authorize]
     public class VeiculosController : Controller
     {
         private readonly IVeiculosRepository _veiculosRepository;

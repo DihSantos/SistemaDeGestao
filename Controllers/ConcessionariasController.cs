@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaDeGestao.Controllers
 {
-    
+    [Authorize]
     public class ConcessionariasController : Controller
     {
         private readonly IConcessionariasRepository _concessionariasRepository;

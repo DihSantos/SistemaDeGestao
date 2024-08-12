@@ -2,9 +2,11 @@
 using SistemaDeGestao.Models;
 using SistemaDeGestao.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaDeGestao.Controllers
 {
+    [Authorize]
     public class VendasController : Controller
     {
         private readonly IVendasRepository _vendasRepository;

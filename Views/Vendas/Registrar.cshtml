@@ -14,16 +14,19 @@
     <div class="row-cols-md-4">
         <label for="clienteNome" class="form-label">Nome do Cliente</label>
         <input type="text" class="form-control" asp-for="NomeCliente" placeholder="Digite o nome" />
+        @Html.ValidationMessageFor(x => x.NomeCliente)
     </div>
 
     <div class="col-md-5">
         <label for="clienteCPF" class="form-label">CPF do Cliente</label>
         <input type="text" class="form-control" asp-for="ClienteCPF" placeholder="Digite o CPF" />
+        @Html.ValidationMessageFor(x => x.ClienteCPF)
     </div>
 
     <div class="col-md-5">
         <label for="clienteFone" class="form-label">Telefone do Cliente</label>
         <input type="text" class="form-control" asp-for="FoneCliente" placeholder="Digite o telefone" />
+        @Html.ValidationMessageFor(x => x.FoneCliente)
     </div>
 
     <div class="col-md-5">
@@ -55,6 +58,7 @@
     <div class="col-md-4">
         <label for="clienteFone" class="form-label">Preço da Venda</label>
         <input type="text" class="form-control" asp-for="PrecoVenda" placeholder="Digite o Valor" />
+        @Html.ValidationMessageFor(x => x.PrecoVenda)
     </div>
     
     <div class="col-12" style="margin-bottom: 60px">
