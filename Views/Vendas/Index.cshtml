@@ -3,51 +3,41 @@
     ViewData["Title"] = "Vendas";
 }
 
-<div class="d-grid d-md-flex">
-    <a class="waves-effect waves-light btn" role="button" asp-controller="Home" asp-action="Index"><i class="small material-icons">arrow_back</i></a>
-</div>
-
-<div class="text-center row">
-    <h3 style="color:#585858">Listagem de Vendas</h3>
-</div>
-
-<br />
-
-<div class="text-center">
-    
-    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a class="btn btn-primary" role="button" asp-controller="Vendas" asp-action="Registrar">Nova Venda</a>
+<header class="d-flex justify-content-between align-items-center">
+    <div>
+        <h3 style="color:#585858">Vendas</h3>
     </div>
 
-    <br />
-    <br />
+    <div>
+        <a class="btn btn-primary" role="button" asp-controller="Vendas" asp-action="Cadastrar">Nova Venda</a>
+    </div>
+</header>
+<hr />
 
-    <table class="table table-striped">
+<div class="text-center">
+
+    <table class="display" id="table-vendas" style="width: 100%">
         <thead>
             <tr style="color:#585858">
+                <th scope="col">#</th>
                 <th scope="col">Protocolo da Venda</th>
                 <th scope="col">Data da Venda</th>
-                <th scope="col">Modelo do Veículo</th>
-                <th scope="col">Concessionária</th>
-                <th scope="col">Valor da Venda</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
             @if (Model != null && Model.Any())
             {
-                foreach (VendasModel vendas in Model)
+                foreach (var vendas in Model)
                 {
                     <tr>
+                        <td>@vendas.Id</td>
                         <td>@vendas.ProtocoloVenda</td>
-                        <td>@vendas.DataVenda</td>
-                        <td>@vendas.VeiculoModelo</td>
-                        <td>@vendas.Concessionaria</td>
-                        <td>@vendas.PrecoVenda</td>
+                        <td>@vendas.DataVenda</td>                       
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a role="button" class="btn btn-info gap-2" asp-route-id="@vendas.ProtocoloVenda" asp-controller="Vendas" asp-action="Editar"><i class="small material-icons">border_color</i></a>
-                                <a role="button" class="btn btn-danger gap-2" asp-route-id="@vendas.ProtocoloVenda" asp-controller="Vendas" asp-action="DeletarConfirmacao"><i class="small material-icons">delete</i></a>
+                                <a role="button" class="btn btn-info gap-2" asp-route-id="@vendas.Id" asp-controller="Vendas" asp-action="Editar"><i class="fa-solid fa-list"></i>Detalhes</a>
+                                <a role="button" class="btn btn-danger gap-2" asp-route-id="@vendas.Id" asp-controller="Vendas" asp-action="DeletarConfirmacao"><i class="fa-solid fa-trash"></i>Deletar</a>
                             </div>
                         </td>
                     </tr>

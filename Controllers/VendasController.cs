@@ -2,9 +2,11 @@
 using SistemaDeGestao.Models;
 using SistemaDeGestao.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaDeGestao.Controllers
 {
+    [Authorize]
     public class VendasController : Controller
     {
         private readonly IVendasRepository _vendasRepository;
@@ -19,26 +21,29 @@ namespace SistemaDeGestao.Controllers
             _vendasRepository = vendasRepository;
             _vendasService = vendasService;
         }
+
         public IActionResult Index()
         {
             List<VendasModel> vendas = _vendasRepository.GetAll();
+         
             return View(vendas);
         }
+
         public IActionResult Registrar()
         {
             LoadData();
             return View();
         }
 
-        public IActionResult DeletarConfirmacao(int ProtocoloVenda)
+        public IActionResult DeletarConfirmacao(int Id)
         {
-            VendasModel veiculos = _vendasRepository.ListarPorId(ProtocoloVenda);
-            return View(veiculos);
+            VendasModel vendas = _vendasRepository.ListarPorId(Id);
+            return View(vendas);
         }
 
-        public IActionResult Deletar(int ProtocoloVenda)
+        public IActionResult Deletar(int Id)
         {
-            _vendasRepository.Deletar(ProtocoloVenda);
+            _vendasRepository.Deletar(Id);
             return RedirectToAction("Index");
         }
 
@@ -48,13 +53,16 @@ namespace SistemaDeGestao.Controllers
             VeiculosModel veiculos = _veiculosRepository.ListarPorId(vendas.VeiculoId);
             var veiculomodelo = veiculos.Modelo;
             vendas.VeiculoModelo = veiculomodelo;
-            _vendasRepository.Registrar(vendas);
-            //LoadData();
-            //float preco = PrecoVenda;
-            //int idVeiculo = VeiculoModelo;
-            //if (_vendasService.PrecoValido(preco, idVeiculo)) 
-
-            return RedirectToAction("Index");
+            
+            float preco = vendas.PrecoVenda;
+            int idVeiculo = vendas.VeiculoId;
+            if (_vendasService.PrecoValido(preco, idVeiculo))
+            {
+                _vendasRepository.Registrar(vendas);
+                return RedirectToAction("Index");
+            }
+            return View(vendas);
+            
         }
 
         public IActionResult Detalhes()

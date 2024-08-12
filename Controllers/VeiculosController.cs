@@ -1,10 +1,11 @@
 ﻿using SistemaDeGestao.Interface;
 using SistemaDeGestao.Models;
-using SistemaDeGestao.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaDeGestao.Controllers
 {
+    [Authorize]
     public class VeiculosController : Controller
     {
         private readonly IVeiculosRepository _veiculosRepository;
@@ -48,7 +49,7 @@ namespace SistemaDeGestao.Controllers
         [HttpPost]
         public IActionResult Cadastrar(VeiculosModel veiculos)
         {
-            _veiculosRepository.Cadastrar(veiculos);
+            _veiculosRepository.Adicionar(veiculos);
 
             return RedirectToAction("Index");
         }

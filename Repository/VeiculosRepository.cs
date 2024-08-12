@@ -22,7 +22,7 @@ namespace SistemaDeGestao.Repository
         {
             return _context.Veiculos.ToList();
         }
-        public VeiculosModel Cadastrar(VeiculosModel veiculos)
+        public VeiculosModel Adicionar(VeiculosModel veiculos)
         {
             _context.Veiculos.Add(veiculos);
             _context.SaveChanges();

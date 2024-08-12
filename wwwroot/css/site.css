@@ -19,5 +19,17 @@ html {
 
 body {
   margin-bottom: 60px;
-  background: #f4f4f4
+}
+
+.field-validation-error {
+    color: #FF5252;
+}
+
+.close-alert{
+    position:absolute;
+    right: -10px;
+    top: -15px;
+    border-radius: 15px;
+    width: 30px;
+    height: 31px;
 }

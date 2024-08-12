@@ -13,9 +13,9 @@ namespace SistemaDeGestao.Repository
             _context = bancoContext;
         }
 
-        public VendasModel ListarPorId(int ProtocoloVenda)
+        public VendasModel ListarPorId(int Id)
         {
-            return _context.Vendas.FirstOrDefault(x => x.ProtocoloVenda == ProtocoloVenda);
+            return _context.Vendas.FirstOrDefault(x => x.Id == Id);
         }
 
         public List<VendasModel> GetAll()
@@ -25,15 +25,17 @@ namespace SistemaDeGestao.Repository
 
         public VendasModel Registrar(VendasModel vendas)
         {
+            vendas.ProtocoloVenda = $"{DateTime.Now:yyyyMMddHHmmss}{new Random().Next(10,9999)}";
+            
             vendas.DataVenda = DateTime.Now;
             _context.Vendas.Add(vendas);
             _context.SaveChanges();
             return vendas;
         }
 
-        public bool Deletar(int ProtocoloVenda)
+        public bool Deletar(int Id)
         {
-            VendasModel vendasDB = ListarPorId(ProtocoloVenda);
+            VendasModel vendasDB = ListarPorId(Id);
 
             if (vendasDB == null) throw new Exception("Houve um erro ao apagar a venda!");
 

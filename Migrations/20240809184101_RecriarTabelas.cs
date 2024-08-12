@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SistemaDeGestao.Migrations
 {
     /// <inheritdoc />
-    public partial class CriarTabelas : Migration
+    public partial class RecriarTabelas : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,8 +16,7 @@ namespace SistemaDeGestao.Migrations
                 columns: table => new
                 {
                     Concessionaria = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false).Annotation("SqlServer:Identity", "1, 1"),
                     Rua = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Cidade = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<string>(type: "char(2)", nullable: false),
@@ -36,10 +35,9 @@ namespace SistemaDeGestao.Migrations
                 columns: table => new
                 {
                     Fabricante = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false).Annotation("SqlServer:Identity", "1, 1"),
                     PaisOrigem = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    AnoFundacao = table.Column<int>(type: "int", nullable: false),
+                    AnoFundacao = table.Column<string>(type: "nvarchar(4)", nullable: false),
                     Website = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -54,7 +52,7 @@ namespace SistemaDeGestao.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Modelo = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    AnoFabricacao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AnoFabricacao = table.Column<string>(type: "nvarchar(4)", nullable: false),
                     Preco = table.Column<float>(type: "real", nullable: false),
                     Fabricante = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     TipoVeiculo = table.Column<string>(type: "nvarchar(max)", nullable: false),

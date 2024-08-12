@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SistemaDeGestao.Models;
-using System.Reflection.Metadata;
 namespace SistemaDeGestao.Data
 {
-    public class BancoContent : DbContext
+    public class BancoContent : IdentityDbContext
     {
         public BancoContent(DbContextOptions<BancoContent> options) : base(options)
         {
@@ -16,15 +16,14 @@ namespace SistemaDeGestao.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<FabricantesModel>()
-                .Property(b => b.Id)
-                .UseIdentityColumn(seed: 1, increment: 1);
-            modelBuilder.Entity<ConcessionariasModel>()
-                .Property(e => e.Id)
-                .UseIdentityColumn(seed: 1, increment: 1);
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<VendasModel>()
-                .Property(i => i.ProtocoloVenda)
-                .UseIdentityColumn(seed:001, increment: 1);
+                .HasIndex(u => u.ProtocoloVenda)
+                .IsUnique();
+            modelBuilder.Entity<VendasModel>()
+                .HasIndex(u => u.ClienteCPF)
+                .IsUnique();
         }
 
     }

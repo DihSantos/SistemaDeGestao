@@ -1,9 +1,11 @@
 ﻿using SistemaDeGestao.Interface;
 using SistemaDeGestao.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaDeGestao.Controllers
 {
+    [Authorize]
     public class FabricantesController : Controller
     {
         private readonly IFabricantesRepository _fabricantesRepository;
@@ -43,16 +45,17 @@ namespace SistemaDeGestao.Controllers
         [HttpPost]
         public IActionResult Cadastrar(FabricantesModel fabricantes)
         {
-            _fabricantesRepository.Adicionar(fabricantes);
-
-            return RedirectToAction("Index");
+                    _fabricantesRepository.Adicionar(fabricantes);
+                                   
+                    return RedirectToAction("Index");
         }
         [HttpPost]
         public IActionResult Alterar(FabricantesModel fabricantes)
         {
-            _fabricantesRepository.Atualizar(fabricantes);
+                _fabricantesRepository.Atualizar(fabricantes);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+
         }
     }
 }

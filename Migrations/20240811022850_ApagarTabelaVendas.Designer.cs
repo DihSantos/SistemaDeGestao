@@ -12,8 +12,8 @@ using SistemaDeGestao.Data;
 namespace SistemaDeGestao.Migrations
 {
     [DbContext(typeof(BancoContent))]
-    [Migration("20240809134804_CriarTabelas")]
-    partial class CriarTabelas
+    [Migration("20240811022850_ApagarTabelaVendas")]
+    partial class ApagarTabelaVendas
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -75,8 +75,9 @@ namespace SistemaDeGestao.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("AnoFundacao")
-                        .HasColumnType("int");
+                    b.Property<string>("AnoFundacao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -96,6 +97,44 @@ namespace SistemaDeGestao.Migrations
                     b.HasKey("Fabricante");
 
                     b.ToTable("Fabricantes");
+                });
+
+            modelBuilder.Entity("SistemaDeGestao.Models.UsuarioModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("DataAlteracao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Perfil")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("SistemaDeGestao.Models.VeiculosModel", b =>
@@ -138,11 +177,11 @@ namespace SistemaDeGestao.Migrations
 
             modelBuilder.Entity("SistemaDeGestao.Models.VendasModel", b =>
                 {
-                    b.Property<int>("ProtocoloVenda")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProtocoloVenda"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClienteCPF")
                         .IsRequired()
@@ -166,6 +205,9 @@ namespace SistemaDeGestao.Migrations
                     b.Property<float>("PrecoVenda")
                         .HasColumnType("real");
 
+                    b.Property<int>("ProtocoloVenda")
+                        .HasColumnType("int");
+
                     b.Property<int>("VeiculoId")
                         .HasColumnType("int");
 
@@ -173,7 +215,7 @@ namespace SistemaDeGestao.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProtocoloVenda");
+                    b.HasKey("Id");
 
                     b.HasIndex("Concessionaria");
 
