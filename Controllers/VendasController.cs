@@ -2,11 +2,9 @@
 using SistemaDeGestao.Models;
 using SistemaDeGestao.Repository;
 using Microsoft.AspNetCore.Mvc;
-using SistemaDeGestao.Filters;
 
 namespace SistemaDeGestao.Controllers
 {
-    [PaginaParaUsuarioLogado]
     public class VendasController : Controller
     {
         private readonly IVendasRepository _vendasRepository;

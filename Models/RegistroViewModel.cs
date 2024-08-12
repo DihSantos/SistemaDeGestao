@@ -1,15 +1,9 @@
-﻿using SistemaDeGestao.Enums;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SistemaDeGestao.Models
 {
-   public class UsuarioViewModel
+   public class RegistroViewModel
     {
-        public int Id { get; set; }
-
-        [Required]
-        public string? Nome { get; set; }
-
         [Required(ErrorMessage ="Informe um login")]
         public string? Login { get; set; }
 

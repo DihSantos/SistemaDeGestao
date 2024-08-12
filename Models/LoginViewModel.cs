@@ -12,6 +12,6 @@ namespace SistemaDeGestao.Models
         public string? Password { get; set; }
 
         [Display(Name = "Lembrar-me")]
-        public bool RememberMe { get; set; }
+        public bool LembreMe { get; set; }
     }
 }

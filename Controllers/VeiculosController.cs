@@ -1,12 +1,10 @@
 ﻿using SistemaDeGestao.Interface;
 using SistemaDeGestao.Models;
-using SistemaDeGestao.Repository;
 using Microsoft.AspNetCore.Mvc;
-using SistemaDeGestao.Filters;
 
 namespace SistemaDeGestao.Controllers
 {
-    [PaginaParaUsuarioLogado]
+   
     public class VeiculosController : Controller
     {
         private readonly IVeiculosRepository _veiculosRepository;

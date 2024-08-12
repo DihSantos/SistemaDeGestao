@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SistemaDeGestao.Data;
-using SistemaDeGestao.Helper;
 using SistemaDeGestao.Interface;
 using SistemaDeGestao.Repository;
 using SistemaDeGestao.Service;
@@ -27,14 +26,7 @@ internal class Program
         builder.Services.AddScoped<IConcessionariasRepository, ConcessionariasRepository>();
         builder.Services.AddScoped<IVendasRepository, VendasRepository>();
         builder.Services.AddScoped<IVendasService, VendasService>();
-        builder.Services.AddScoped<IUsuariosRepository, UsuariosRepository>();
-        builder.Services.AddScoped<ISessao, Sessao>();
-
-        builder.Services.AddSession(o =>
-        {
-            o.Cookie.HttpOnly = true;
-            o.Cookie.IsEssential = true;
-        });
+        
 
 
         var app = builder.Build();
@@ -58,7 +50,7 @@ internal class Program
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Login}/{action=Index}/{id?}");
+            pattern: "{controller=Home}/{action=Index}/{id?}");
 
         app.Run();
     }

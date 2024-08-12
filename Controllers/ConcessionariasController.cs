@@ -1,14 +1,11 @@
 ﻿using SistemaDeGestao.Interface;
 using SistemaDeGestao.Models;
 using Microsoft.AspNetCore.Mvc;
-using SistemaDeGestao.Filters;
-using SistemaDeGestao.Repository;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaDeGestao.Controllers
 {
-    [Authorize]
+    
     public class ConcessionariasController : Controller
     {
         private readonly IConcessionariasRepository _concessionariasRepository;

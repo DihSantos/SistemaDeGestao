@@ -1,11 +1,11 @@
 ﻿using SistemaDeGestao.Interface;
 using SistemaDeGestao.Models;
 using Microsoft.AspNetCore.Mvc;
-using SistemaDeGestao.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaDeGestao.Controllers
 {
-    [PaginaParaUsuarioLogado]
+    
     public class FabricantesController : Controller
     {
         private readonly IFabricantesRepository _fabricantesRepository;

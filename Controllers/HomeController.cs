@@ -1,11 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SistemaDeGestao.Filters;
 using SistemaDeGestao.Models;
 using System.Diagnostics;
 
 namespace SistemaDeGestao.Controllers
 {
-    [PaginaParaUsuarioLogado]
+   
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
