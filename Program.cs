@@ -42,7 +42,6 @@ internal class Program
         });    
         
 
-
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -61,6 +60,12 @@ internal class Program
         app.UseAuthentication();
         app.UseAuthorization();
         //app.UseSession();
+
+        app.MapControllerRoute(
+            name:"MinhaArea",
+            pattern:"{area=exists}/{controller=Admin}/{acton=Index}/{id?}");
+
+        app.Run();
 
         app.MapControllerRoute(
             name: "default",
