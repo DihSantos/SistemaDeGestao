@@ -13,29 +13,30 @@ namespace SistemaDeGestao.Controllers
         {
             _concessionariasRepository = concessionariasRepository;
         }
+        [Authorize(Roles = "Vendedor, Administrador, Gerente")]
         public IActionResult Index()
         {
             List<ConcessionariasModel> concessionarias = _concessionariasRepository.GetAll();
             return View(concessionarias);
         }
-        [Authorize]
+        [Authorize(Roles = "Administrador, Gerente")]
         public IActionResult Cadastrar()
         {
             return View();
         }
-        [Authorize]
+        [Authorize(Roles = "Administrador, Gerente")]
         public IActionResult Editar(int id)
         {
             ConcessionariasModel concessionarias = _concessionariasRepository.ListarPorId(id);
             return View(concessionarias);
         }
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public IActionResult DeletarConfirmacao(int id)
         {
             ConcessionariasModel concessionarias = _concessionariasRepository.ListarPorId(id);
             return View(concessionarias);
         }
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Deletar(int id)
         {
             _concessionariasRepository.Deletar(id);

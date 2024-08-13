@@ -16,30 +16,32 @@ namespace SistemaDeGestao.Controllers
             _veiculosRepository = veiculosRepository;
             _fabricantesRepository = fabricantesRepository;
         }
-
+        [Authorize(Roles = "Vendedor, Administrador, Gerente")]
         public IActionResult Index()
         {
             List<VeiculosModel> veiculos = _veiculosRepository.GetAll();
             return View(veiculos);
         }
-
+        [Authorize(Roles = "Administrador, Gerente")]
         public IActionResult Cadastrar()
         {
             LoadData();
             return View();
         }
-
+        [Authorize(Roles = "Administrador, Gerente")]
         public IActionResult Editar(int id)
         {
             VeiculosModel veiculos = _veiculosRepository.ListarPorId(id);
             return View(veiculos);
         }
 
+        [Authorize(Roles = "Administrador")]
         public IActionResult DeletarConfirmacao(int id)
         {
             VeiculosModel veiculos = _veiculosRepository.ListarPorId(id);
             return View(veiculos);
         }
+        [Authorize(Roles = "Administrador")]
         public IActionResult Deletar(int id)
         {
             _veiculosRepository.Deletar(id);

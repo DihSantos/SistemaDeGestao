@@ -73,5 +73,12 @@ namespace SistemaDeGestao.Controllers
             await signInManager.SignOutAsync();
             return RedirectToAction("Login", "Contas");
         }
+
+        [HttpGet]
+        [Route("/Contas/AcessoNegado")]
+        public ActionResult AcessoNegado()
+        {
+            return View();
+        }
     }
 }

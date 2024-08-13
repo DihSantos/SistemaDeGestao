@@ -14,29 +14,30 @@ namespace SistemaDeGestao.Controllers
         {
             _fabricantesRepository = fabricantesRepository;
         }
+        [Authorize(Roles = "Vendedor,Administrador, Gerente")]
         public IActionResult Index()
         {
             List<FabricantesModel> fabricantes = _fabricantesRepository.GetAll();
             return View(fabricantes);
         }
-        [Authorize]
+        [Authorize(Roles = "Administrador, Gerente")]
         public IActionResult Cadastrar()
         {
             return View();
         }
-        [Authorize]
+        [Authorize(Roles = "Administrador, Gerente")]
         public IActionResult Editar(int id)
         {
             FabricantesModel fabricantes = _fabricantesRepository.ListarPorId(id);
             return View(fabricantes);
         }
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public IActionResult DeletarConfirmacao(int id)
         {
             FabricantesModel fabricantes = _fabricantesRepository.ListarPorId(id);
             return View(fabricantes);
         }
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Deletar(int id)
         {
             _fabricantesRepository.Deletar(id);

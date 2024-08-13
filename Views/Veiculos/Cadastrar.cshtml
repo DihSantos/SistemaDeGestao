@@ -12,16 +12,19 @@
     <div class="row-cols-md-6">
         <label for="modelo" class="form-label">Modelo</label>
         <input type="text" asp-for="Modelo" class="form-control" placeholder="Digite o modelo do veículo">
+        @Html.ValidationMessageFor(x => x.Modelo)
     </div>
 
     <div class="row-cols-md-6">
         <label for="anoFabricacao" class="form-label">Ano de Fabricação</label>
         <input type="text" asp-for="AnoFabricacao" class="form-control" min="1880" max="@DateTime.Now.Year" placeholder="Digite o ano de fabricação do veículo">
+        @Html.ValidationMessageFor(x => x.AnoFabricacao)
     </div>
 
     <div class="col-md-4">
         <label for="preco" class="form-label">Preço</label>
         <input type="text" asp-for="Preco" class="form-control" placeholder="Digite o preço">
+        @Html.ValidationMessageFor(x => x.Preco)
     </div>
 
     <div class="col-md-4">
@@ -35,6 +38,7 @@
                 }
             }
         </select>
+        @Html.ValidationMessageFor(x => x.Fabricante)
     </div>
 
     <div class="col-md-4">
@@ -46,6 +50,7 @@
             <option value="Caminhão">Caminhão</option>
             <option value="Moto">Moto</option>
         </select>
+        @Html.ValidationMessageFor(x => x.TipoVeiculo)
     </div>
 
     <div class="col-md-6">
@@ -54,7 +59,7 @@
     </div>
 
     <div class="col-12">
-        <button class="waves-effect waves-light btn" type="submit">Cadastrar</button>
+        <button class="btn btn-primary" type="submit">Cadastrar</button>
         <a class="btn btn-light" asp-controller="Veiculos" asp-action="Index" role="button">Voltar</a>
     </div>
 </form>

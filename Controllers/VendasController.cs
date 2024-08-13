@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaDeGestao.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Vendedor, Administrador, Gerente")]
     public class VendasController : Controller
     {
         private readonly IVendasRepository _vendasRepository;

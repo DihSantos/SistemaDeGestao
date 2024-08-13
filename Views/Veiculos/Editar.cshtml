@@ -14,21 +14,33 @@
     <div class="row-cols-md-6">
         <label for="modelo" class="form-label">Modelo</label>
         <input type="text" asp-for="Modelo" class="form-control" placeholder="Digite o modelo do veículo">
+        @Html.ValidationMessageFor(x => x.Modelo)
     </div>
 
     <div class="row-cols-md-6">
         <label for="anoFabricacao" class="form-label">Ano de Fabricação</label>
         <input type="text" asp-for="AnoFabricacao" class="form-control" min="1880" max="@DateTime.Now.Year" placeholder="Digite o ano de fabricação do veículo">
+        @Html.ValidationMessageFor(x => x.AnoFabricacao)
     </div>
 
     <div class="col-md-4">
         <label for="preco" class="form-label">Preço</label>
         <input type="text" asp-for="Preco" class="form-control" placeholder="Digite o preço">
+        @Html.ValidationMessageFor(x => x.Preco)
     </div>
 
     <div class="col-md-4">
-        <label for="fabricante" class="form-label">Fabricante</label>
-        <input type="text" asp-for="Fabricante" class="form-control" placeholder="Digite o fabricante">
+        <label for="Fabricante" class="form-label">Fabricante</label>
+        <select type="text" class="form-select" asp-for="Fabricante">
+            <option value="" selected disabled>Selecione um Fabricante</option>
+            @{
+                foreach (var fabricantes in ViewBag.Fabricantes)
+                {
+                    <option value="@fabricantes.Fabricante">@fabricantes.Fabricante</option>
+                }
+            }
+        </select>
+        @Html.ValidationMessageFor(x => x.Fabricante)
     </div>
 
     <div class="col-md-4">
@@ -40,6 +52,7 @@
             <option value="">Caminhão</option>
             <option value="">Moto</option>
         </select>
+        @Html.ValidationMessageFor(x => x.TipoVeiculo)
     </div>
 
     <div class="col-md-6">

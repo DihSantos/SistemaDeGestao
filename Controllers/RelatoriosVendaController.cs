@@ -6,7 +6,7 @@ using SistemaDeGestao.Repository;
 
 namespace SistemaDeGestao.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador, Gerente")]
     public class RelatoriosVendaController : Controller
     {
         private readonly IRelatorioVendasRepository _relatorioVendasRepository;
