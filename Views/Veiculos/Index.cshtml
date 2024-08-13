@@ -1,0 +1,78 @@
+﻿@model List<VeiculosModel>
+@{
+    ViewData["Title"] = "Lista de Veículos";
+}
+
+<header class="d-flex justify-content-between align-items-center">
+
+    <a class="btn btn-light" asp-controller="Home" asp-action="Menu" role="button">Voltar</a>
+
+    <div>
+        <h3 style="color:#585858">Veículos</h3>
+    </div>
+
+    <div>
+        <a class="btn btn-primary" role="button" asp-controller="Veiculos" asp-action="Cadastrar">Novo Veículo</a>
+    </div>
+</header>
+<hr />
+
+<div class="text-center" style="margin-bottom:60px">
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert">x</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert">x</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
+    <table class="display" id="table-veiculo" style="width:100%">
+        <thead>
+            <tr style="color:#585858">
+                <th scope="col">#</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Ano de Fabricação</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Fabricante</th>
+                <th scope="col">Tipo de Veículo</th>
+                <th scope="col">Descrição</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var veiculos in Model)
+                {
+                    <tr>
+                        <th scope="row">@veiculos.Id</th>
+                        <td>@veiculos.Modelo</td>
+                        <td>@veiculos.AnoFabricacao</td>
+                        <td>@veiculos.Preco</td>
+                        <td>@veiculos.Fabricante</td>
+                        <td>@veiculos.TipoVeiculo</td>
+                        <td>@veiculos.Descricao</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a role="button" class="btn btn-info" asp-route-id="@veiculos.Id" asp-controller="Veiculos" asp-action="Editar"><i class="fa-solid fa-pen"></i>Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@veiculos.Id" asp-controller="Veiculos" asp-action="DeletarConfirmacao"><i class="fa-solid fa-trash"></i>Deletar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,86 @@
+﻿@model IEnumerable<VendasDto>
+
+
+@{
+    ViewBag.Title = "Relatórios de Vendas";
+}
+
+
+<header class="d-flex justify-content-between align-items-center">
+
+    <a class="btn btn-light" asp-controller="Home" asp-action="Menu" role="button">Voltar</a>
+
+    <div>
+        <h3 style="color:#585858">Relatório de Vendas</h3>
+    </div>
+
+    <div>
+        <a class="btn btn-primary" role="button" asp-controller="Vendas" asp-action="Cadastrar">Nova Venda</a>
+    </div>
+</header>
+<hr />
+
+<form asp-controller="RelatoriosVenda" asp-action="Filtrar" method="get">
+    <div class="form-group">
+        <label for="ProtocoloVenda">Fabricante</label>
+        <input type="text" class="form-control" name="ProtocoloVenda" value="@ViewData["Fabricante"]" />
+    </div>
+    <div class="form-group">
+        <label for="Concessionaria">Concessionária</label>
+        <input type="text" class="form-control" name="Concessionaria" value="@ViewData["Concessionaria"]" />
+    </div>
+    <div class="form-group">
+        <label for="TipoVeiculo">Tipo do Veículo</label>
+        <input type="text" class="form-control" name="TipoVeiculo" value="@ViewData["TipoVeiculo"]" />
+    </div>
+    <div class="form-group">
+        <label for="DataVendaMin">Data de Venda Inicial</label>
+        <input type="date" class="form-control" name="DataVendaMin" value="@ViewData["DataVendaMin"]" />
+    </div>
+    <div class="form-group">
+        <label for="DataVendaMax">Data de Venda Final</label>
+        <input type="date" class="form-control"  name="DataVendaMax" value="@ViewData["DataVendaMax"]" />
+    </div>
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+</form>
+
+<hr />
+
+<br />
+
+<table class="table">
+     <thead>
+        <tr>
+            <th>#</th>
+            <th>Protocolo Da Venda</th>
+            <th>Fabricante</th>
+            <th>Concessionária</th>
+            <th>Tipo</th>
+            <th>Modelo</th>
+            <th>Preço da Venda</th>
+            <th>Data da Venda</th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var venda in Model)
+            {
+                <tr>
+                    <th>@venda.Id</th>
+                    <th>@venda.ProtocoloVenda</th>
+                    <th>@venda.Fabricante</th>
+                    <th>@venda.Concessionaria</th>
+                    <th>@venda.TipoVeiculo</th>
+                    <th>@venda.VeiculoModelo</th>
+                    <th>@venda.PrecoVenda</th>
+                    <th>@venda.DataVenda</th>
+                </tr>
+            }
+         }
+        </tbody>
+    </table>
+}
+
+
+

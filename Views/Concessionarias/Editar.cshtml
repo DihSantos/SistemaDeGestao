@@ -1,0 +1,56 @@
+﻿@model ConcessionariasModel
+@{
+    ViewData["Title"] = "Editar Concessionárias";
+}
+
+<div class="text-center">
+    <h3 style="color:#585858">Editar Concessionárias</h3>
+</div>
+
+<form asp-controller="Concessionarias" asp-action="Alterar" method="post" class="row g-3" style="margin-bottom: 70px">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="row-cols-md-6">
+        <label for="nomeConcessionaria" class="form-label">Nome da Concessionária</label>
+        <input type="text" asp-for="Concessionaria" class="form-control" placeholder="Digite o nome da concessionária">
+    </div>
+
+    <div class="row-cols-md-6">
+        <label for="rua" class="form-label">Rua</label>
+        <input type="text" asp-for="Rua" class="form-control" placeholder="Digite a rua">
+    </div>
+
+    <div class="col-md-6">
+        <label for="cidade" class="form-label">Cidade</label>
+        <input type="text" asp-for="Cidade" class="form-control" placeholder="Digite a cidade">
+    </div>
+
+    <div class="col-md-6">
+        <label for="estado" class="form-label">Estado</label>
+        <input type="text" asp-for="Estado" class="form-control" placeholder="Digite o estado">
+    </div>
+
+    <div class="col-md-6">
+        <label for="cep" class="form-label">CEP</label>
+        <input type="text" asp-for="CEP" class="form-control" placeholder="Digite o CEP">
+    </div>
+
+    <div class="col-md-6">
+        <label for="telefone" class="form-label">Telefone</label>
+        <input type="text" asp-for="Telefone" class="form-control" placeholder="Digite o telefone">
+    </div>
+    <div class="col-md-6">
+        <label for="email" class="form-label">E-mail</label>
+        <input type="text" asp-for="Email" class="form-control" placeholder="Digite o e-mail">
+    </div>
+    <div class="col-md-6">
+        <label for="capacidadeVeiculos" class="form-label">Capacide de Veículos</label>
+        <input type="text" asp-for="CapacidadeVeiculos" class="form-control" placeholder="Digite a Capacidade de Veículos">
+    </div>
+
+    <div class="col-12">
+        <button class="waves-effect waves-light btn" type="submit">Salvar dados</button>
+        <a class="btn btn-light" asp-controller="Fabricantes" asp-action="Index" role="button">Voltar</a>
+    </div>
+</form>

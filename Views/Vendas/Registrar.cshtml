@@ -1,0 +1,69 @@
+﻿@model VendasModel
+
+@{
+    ViewData["Title"] = "Registro de Vendas";
+}
+
+<div class="text-center">
+    <h3 style="color:#585858">Realizar Venda</h3>
+</div>
+
+<br />
+
+<form asp-controller="Vendas" asp-action="Registrar" method="post" class="row g-2 gap-2" >
+    <div class="row-cols-md-4">
+        <label for="clienteNome" class="form-label">Nome do Cliente</label>
+        <input type="text" class="form-control" asp-for="NomeCliente" placeholder="Digite o nome" />
+        @Html.ValidationMessageFor(x => x.NomeCliente)
+    </div>
+
+    <div class="col-md-5">
+        <label for="clienteCPF" class="form-label">CPF do Cliente</label>
+        <input type="text" class="form-control" asp-for="ClienteCPF" placeholder="Digite o CPF" />
+        @Html.ValidationMessageFor(x => x.ClienteCPF)
+    </div>
+
+    <div class="col-md-5">
+        <label for="clienteFone" class="form-label">Telefone do Cliente</label>
+        <input type="text" class="form-control" asp-for="FoneCliente" placeholder="Digite o telefone" />
+        @Html.ValidationMessageFor(x => x.FoneCliente)
+    </div>
+
+    <div class="col-md-5">
+        <label for="veiculo" class="form-label">Veículo</label>
+        <select type="text" class="form-select" asp-for="VeiculoId">
+            <option value="" selected disabled>Selecione o veículo</option>
+            @{
+                foreach(var veiculos in ViewBag.Veiculos)
+                {
+                    <option value="@veiculos.Id">@veiculos.Modelo</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="col-md-5">
+        <label for="Concessionaria" class="form-label">Concessionaria</label>
+        <select class="form-select" asp-for="Concessionaria">
+            <option value="" selected disabled>Selecione a Concessionária</option>
+            @{
+                foreach (var concessionarias in ViewBag.Concessionarias)
+                {
+                    <option value="@concessionarias.Concessionaria">@concessionarias.Concessionaria</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label for="clienteFone" class="form-label">Preço da Venda</label>
+        <input type="text" class="form-control" asp-for="PrecoVenda" placeholder="Digite o Valor" />
+        @Html.ValidationMessageFor(x => x.PrecoVenda)
+    </div>
+    
+    <div class="col-12" style="margin-bottom: 60px">
+    <button class="waves-effect waves-light btn" type="submit">Registrar venda</button>
+    <a class="btn btn-light" asp-controller="Vendas" asp-action="Index" role="button">Voltar</a>
+    </div>
+
+</form>

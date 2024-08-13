@@ -1,0 +1,56 @@
+﻿@model List<VendasModel>
+@{
+    ViewData["Title"] = "Vendas";
+}
+
+<header class="d-flex justify-content-between align-items-center">
+
+    <a class="btn btn-light" asp-controller="Home" asp-action="Menu" role="button">Voltar</a>
+
+    <div>
+        <h3 style="color:#585858">Vendas</h3>
+    </div>
+
+    <div>
+        <a class="btn btn-primary" role="button" asp-controller="Vendas" asp-action="Cadastrar">Nova Venda</a>
+    </div>
+</header>
+<hr />
+
+<div class="text-center">
+
+    <table class="display" id="table-vendas" style="width: 100%">
+        <thead>
+            <tr style="color:#585858">
+                <th scope="col">#</th>
+                <th scope="col">Protocolo da Venda</th>
+                <th scope="col">Data da Venda</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var vendas in Model)
+                {
+                    <tr>
+                        <td>@vendas.Id</td>
+                        <td>@vendas.ProtocoloVenda</td>
+                        <td>@vendas.DataVenda</td>                       
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a role="button" class="btn btn-info gap-2" asp-route-id="@vendas.Id" asp-controller="Vendas" asp-action="Editar"><i class="fa-solid fa-list"></i>Detalhes</a>
+                                <a role="button" class="btn btn-danger gap-2" asp-route-id="@vendas.Id" asp-controller="Vendas" asp-action="DeletarConfirmacao"><i class="fa-solid fa-trash"></i>Deletar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+
+
