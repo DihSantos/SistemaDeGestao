@@ -67,7 +67,8 @@ namespace SistemaDeGestao.Controllers
 
         public IActionResult Detalhes()
         {
-            return View();
+            List<VendasModel> vendas = _vendasRepository.GetAll();
+            return View(vendas);
         }
 
         private void LoadData()

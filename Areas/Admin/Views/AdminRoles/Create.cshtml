@@ -1,7 +1,15 @@
 ﻿@model string
 
-<h1 class="bg-info text-white">Criar Role</h1>
-<a asp-action="Index" class="btn btn-secondary">Retornar</a>
+<header class="d-flex justify-content-between align-items-center">
+    <div>
+        <h3 style="color:#585858">Criar Role</h3>
+    </div>
+</header>
+
+<hr />
+
+<a asp-action="Index" class="btn btn-primary">Voltar</a>
+
 <div asp-validation-summary="All" class="text-danger"></div>
 
 <form asp-action="Create" method="post">

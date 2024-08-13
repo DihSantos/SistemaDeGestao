@@ -1,17 +1,25 @@
 ﻿@model IEnumerable<IdentityUser>
 
-<h1>Usuários</h1>
+
+<header class="d-flex justify-content-between align-items-center">
+    <div>
+        <h3 style="color:#585858">Usuários</h3>
+    </div> 
+    <div>
+        <a class="btn btn-primary" style="width:auto" asp-controller="Contas" asp-area="" asp-action="Registro">Novo Usuário</a>
+    </div>
+</header>
+<hr />
+<a asp-action="Index" asp-controller="Admin" class="btn btn-primary">Voltar</a>
+
+<br />
+<br />
 
 @if (Model.Any())
 {
-    <a asp-action="Register" asp-controller="Account" asp-area=""
-       class="btn btn-primary mb-3" style="width:auto">
-        Novo Usuário
-    </a>
-
     foreach (var user in Model)
     {
-        <div class="card mb-3">
+        <div class="card mb-3" style="width:100%">
             <div class="card-header">
                 User Id : @user.Id
             </div>
@@ -38,10 +46,6 @@ else
             <h5 class="card-title">
                 Clique no botão para criar um usuário
             </h5>
-            <a class="btn btn-primary" style="width:auto"
-               asp-controller="Account" asp-area="" asp-action="Register">
-                Novo Usuário
-            </a>
         </div>
     </div>
 }

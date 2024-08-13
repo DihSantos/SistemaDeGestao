@@ -21,7 +21,7 @@ namespace SistemaDeGestao.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult Filtrar(VendasFiltro filtro)
+        public IActionResult ProcessoFiltrar(VendasFiltro filtro)
         {
             var vendas = _relatorioVendasRepository.FiltrarVendas(filtro).ToList();
             ViewData["Concessionaria"] = filtro.Concessionaria;

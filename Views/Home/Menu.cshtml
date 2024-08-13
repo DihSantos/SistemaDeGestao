@@ -1,4 +1,8 @@
-﻿@{
+﻿
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> userManager
+
+@{
     ViewData["Title"] = "Menu";
 }
 
@@ -29,12 +33,14 @@
     </div>  
 
 </div> 
-
-<div class="row texte-center" style="margin-top:100px; margin-left:100px">
-    <div class="col-md-3">
-        <div class="row">
-            <a class="relatorios" asp-controller="RelatoriosVenda" asp-action="Filtrar">Relatórios</a>
+@if (User.IsInRole("Administrador") || User.IsInRole("Gerente"))
+{
+    <div class="row texte-center" style="margin-top:100px; margin-left:100px">
+        <div class="col-md-3">
+            <div class="row">
+                <a class="relatorios" asp-controller="RelatoriosVenda" asp-action="Index">Relatórios</a>
+            </div>
         </div>
     </div>
-</div>
+}
 
